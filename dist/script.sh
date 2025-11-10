@@ -14,6 +14,14 @@ flatpak install com.github.neithern.g4music app.zen_browser.zen com.discordapp.D
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+echo >> /home/eshayat/.config/fish/config.fish
+
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/eshayat/.config/fish/config.fish
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+curl -fsSL https://ollama.com/install.sh | sh
+
 chsh -s /usr/bin/fish
 
 git config --global init.defaultBranch main
