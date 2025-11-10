@@ -18,5 +18,8 @@ chsh -s /usr/bin/fish
 
 git config --global init.defaultBranch main
 
-git config --global credential.credentialStore secretservice
+git config --global --unset-all credential.helper
 
+git config --global --get-all credential.helper
+
+git-credential-manager configure
