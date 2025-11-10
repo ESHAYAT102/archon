@@ -1,0 +1,5 @@
+{
+  "name": "Archon Setup",
+  "description": "A minimal website to showcase the single command needed to set up a clean Arch Linux environment.",
+  "requestFramePermissions": []
+}
