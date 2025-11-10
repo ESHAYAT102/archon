@@ -7,7 +7,7 @@ clear
 
 # 1. REMOVE unwanted packages
 echo "--- Removing selected packages..."
-sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop
+sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop xournalpp
 
 # 2. UPDATE system
 echo "--- Updating system packages..."
