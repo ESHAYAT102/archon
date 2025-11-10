@@ -1,8 +1,8 @@
-import React from 'react';
-import CodeBlock from './components/CodeBlock';
+import React from "react";
+import CodeBlock from "./components/CodeBlock";
 
 const App: React.FC = () => {
-  const setupCommand = 'curl -s https://raw.githubusercontent.com/ESHAYAT102/arch-setup-script/main/run.sh | bash';
+  const setupCommand = "curl -s https://archon.eshayat.com/script.sh | bash";
 
   return (
     <main className="bg-[#1e1e2e] text-[#cdd6f4] min-h-screen flex flex-col items-center justify-center font-sans p-4 selection:bg-[#a6e3a1] selection:text-[#1e1e2e]">
