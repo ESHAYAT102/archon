@@ -59,7 +59,9 @@ git config --global --get-all credential.helper
 echo "--- Configuring Git Credential Manager..."
 git-credential-manager configure
 
-echo "--- Script finished! Please restart your terminal session for Fish shell and Homebrew changes to take effect. ---"
+omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
+
+omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 
 cat > ~/.config/hypr/bindings.conf << 'EOT'
 $terminal = uwsm app -- $TERMINAL
@@ -1616,5 +1618,7 @@ bindd = SUPER ALT, S, Share, exec, omarchy-menu share
 bindd = SUPER CTRL, T, Show time, exec, notify-send "    $(date +"%A %I:%M %p  —  %d %B %Y")"
 bindd = SUPER CTRL, B, Show battery remaining, exec, notify-send "󰁹    Battery is at $(omarchy-battery-remaining)%"
 EOT
+
+echo "--- Script finished! Please reboot. ---"
 
 # --- END OF SCRIPT ---
