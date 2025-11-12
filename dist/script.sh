@@ -63,6 +63,14 @@ omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-the
 
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 
+cd /usr/share/icons/
+
+git clone https://github.com/ESHAYAT102/vision-cursor.git Vision
+
+cd ~
+
+hyprctl setcursor Vision 32
+
 cat > ~/.config/hypr/bindings.conf << 'EOT'
 $terminal = uwsm app -- $TERMINAL
 
