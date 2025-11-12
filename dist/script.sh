@@ -71,6 +71,10 @@ cd ~
 
 hyprctl setcursor Vision 32
 
+echo '
+hyprctl setcursor Vision 32
+' > ~/.local/share/omarchy/default/hypr/autostart.conf
+
 cat > ~/.config/hypr/bindings.conf << 'EOT'
 $terminal = uwsm app -- $TERMINAL
 
@@ -1172,23 +1176,9 @@ echo '
                                        ███   █▀
 ' > ~/.config/omarchy/branding/screensaver_og.txt
 
-cat > ~/.local/share/omarchy/default/hypr/autostart.conf << 'EOT'
-exec-once = uwsm-app -- hypridle
-exec-once = uwsm-app -- mako
-exec-once = uwsm-app -- waybar
-exec-once = uwsm-app -- fcitx5
-exec-once = uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill
-exec-once = uwsm-app -- swayosd-server
-exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec-once = omarchy-cmd-first-run
-exec-once = uwsm-app -- elephant
-exec-once = uwsm-app -- walker --gapplication-service
-
-# Slow app launch fix -- set systemd vars
-exec-once = systemctl --user import-environment $(env | cut -d'=' -f 1)
-exec-once = dbus-update-activation-environment --systemd --all
+echo '
 exec-once = ollama serve
-EOT
+' >> ~/.local/share/omarchy/default/hypr/autostart.conf
 
 cat > ~/.local/share/omarchy/default/hypr/windows.conf << 'EOT'
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
