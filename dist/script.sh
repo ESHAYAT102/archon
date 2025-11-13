@@ -440,8 +440,6 @@ end
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
-
-ff
 EOT
 
 cat > ~/.config/fish/functions/fish_prompt.fish << 'EOT'
