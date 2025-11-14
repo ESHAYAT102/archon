@@ -414,7 +414,7 @@ alias update "sudo pacman -Syu && yay -Syu"
 
 alias ff fastfetch
 
-alias cls "clear && fastfetch"
+alias cls "clear"
 
 alias fishconfig "nvim ~/.config/fish/config.fish"
 
