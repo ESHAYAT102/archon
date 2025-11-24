@@ -828,10 +828,9 @@ $terminal = uwsm app -- $TERMINAL
 bindd = SUPER, L, Hyprlock, exec, hyprlock
 bindd = SUPER SHIFT, L, Screensaver, exec, omarchy-launch-screensaver
 bindd = SUPER, return, Terminal, exec, $terminal --working-directory="$(omarchy-cmd-terminal-cwd)"
-bindd = SUPER, E, File manager, exec, uwsm app -- nautilus --new-window
+bindd = SUPER, E, File manager, exec, $terminal yazi
 bindd = SUPER, W, Browser, exec, flatpak run app.zen_browser.zen
 bindd = SUPER SHIFT, W, Private Browser, exec, flatpak run app.zen_browser.zen --private-window
-bindd = SUPER, B, Brave Browser, exec, brave
 bindd = SUPER, S, Music, exec, omarchy-launch-or-focus spotify
 bindd = SUPER, T, Activity, exec, $terminal -e btop
 bindd = SUPER SHIFT, T, Mission Center, exec, flatpak run io.missioncenter.MissionCenter
