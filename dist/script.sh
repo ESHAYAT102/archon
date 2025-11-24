@@ -17,15 +17,11 @@ sudo pacman -Syu --noconfirm
 echo "--- Installing core packages..."
 sudo pacman -S --noconfirm flatpak fish ghostty yazi btop cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin cursor-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
 
-# 4. INSTALL git-credential-manager-bin (using yay)
-echo "--- Installing git-credential-manager-bin via yay..."
-yay -S --noconfirm git-credential-manager-bin
-
-# 5. INSTALL Flatpak applications
+# 6. INSTALL Flatpak applications
 echo "--- Installing Flatpak applications..."
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter -y
 
-# 6. INSTALL Homebrew (and configure Fish shell)
+# 7. INSTALL Homebrew (and configure Fish shell)
 echo "--- Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -41,23 +37,18 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.config/
 # Evaluate the Homebrew environment in the current script session
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# 7. INSTALL Ollama
+# 8. INSTALL Ollama
 echo "--- Installing Ollama..."
 curl -fsSL https://ollama.com/install.sh | sh
 
-# 8. SET Fish as the default shell
+# 9. SET Fish as the default shell
 echo "--- Changing default shell to Fish..."
 chsh -s /usr/bin/fish
 
-# 9. CONFIGURE Git
+# 10. CONFIGURE Git
 echo "--- Configuring global Git settings..."
 git config --global init.defaultBranch main
-git config --global --unset-all credential.helper
-git config --global --get-all credential.helper
-
-# 10. CONFIGURE Git Credential Manager
-echo "--- Configuring Git Credential Manager..."
-git-credential-manager configure
+git config --global --replace-all credential.helper store
 
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
 
