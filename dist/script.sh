@@ -50,9 +50,9 @@ echo "--- Configuring global Git settings..."
 git config --global init.defaultBranch main
 git config --global --replace-all credential.helper store
 
-omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
-
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
+
+omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
 
 cat > ~/.config/yazi/theme.toml << 'EOT'
 [mgr]
