@@ -19,7 +19,7 @@ sudo pacman -S --noconfirm flatpak fish ghostty yazi btop cava cmatrix stow lib3
 
 # 6. INSTALL Flatpak applications
 echo "--- Installing Flatpak applications..."
-flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter -y
+flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter fr.handbrake.ghb -y
 
 # 7. INSTALL Homebrew (and configure Fish shell)
 echo "--- Installing Homebrew..."
