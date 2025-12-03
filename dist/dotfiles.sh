@@ -1182,6 +1182,7 @@ keybind = ctrl+a=select_all
 keybind = ctrl+t=new_tab
 keybind = ctrl+tab=next_tab
 keybind = ctrl+shift+tab=previous_tab
+keybind = ctrl+l=clear_screen
 EOT
 
 cat > ~/.XCompose << 'EOT'
