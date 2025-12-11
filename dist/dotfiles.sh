@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo echo '
+HandleLidSwitch=ignore
+' >> /etc/systemd/logind.conf
+
 cat > ~/.config/nvim/lua/config/options.lua << 'EOT'
 vim.opt.relativenumber = true
 EOT
