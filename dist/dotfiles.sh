@@ -2061,15 +2061,47 @@ bindmd = SUPER, mouse:272, Move window, movewindow
 bindmd = SUPER, mouse:273, Resize window, resizewindow
 EOT
 
+cat > ~/.local/share/omarchy/default/hypr/bindings/media.conf << 'EOT'
+# Only display the OSD on the currently focused monitor
+$osdclient = swayosd-client --monitor "$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')"
+
+# Laptop multimedia keys for volume and LCD brightness (with OSD)
+bindeld = ,XF86AudioRaiseVolume, Volume up, exec, $osdclient --output-volume raise
+bindeld = ,XF86AudioLowerVolume, Volume down, exec, $osdclient --output-volume lower
+bindeld = ,XF86AudioMute, Mute, exec, $osdclient --output-volume mute-toggle
+bindeld = ,XF86AudioMicMute, Mute microphone, exec, $osdclient --input-volume mute-toggle
+bindeld = ,XF86MonBrightnessUp, Brightness up, exec, $osdclient --brightness raise
+bindeld = ,XF86MonBrightnessDown, Brightness down, exec, $osdclient --brightness lower
+bindeld = SUPER, page_up, Brightness up, exec, $osdclient --brightness raise
+bindeld = SUPER, page_down, Brightness down, exec, $osdclient --brightness lower
+
+# Precise 1% multimedia adjustments with Alt modifier
+bindeld = ALT, XF86AudioRaiseVolume, Volume up precise, exec, $osdclient --output-volume +1
+bindeld = ALT, XF86AudioLowerVolume, Volume down precise, exec, $osdclient --output-volume -1
+bindeld = ALT, XF86MonBrightnessUp, Brightness up precise, exec, $osdclient --brightness +1
+bindeld = ALT, XF86MonBrightnessDown, Brightness down precise, exec, $osdclient --brightness -1
+bindeld = SUPER ALT, page_up, Brightness up precise, exec, $osdclient --brightness +1
+bindeld = SUPER ALT, page_down, Brightness down precise, exec, $osdclient --brightness -1
+
+# Requires playerctl
+bindld = , XF86AudioNext, Next track, exec, $osdclient --playerctl next
+bindld = , XF86AudioPause, Pause, exec, $osdclient --playerctl play-pause
+bindld = , XF86AudioPlay, Play, exec, $osdclient --playerctl play-pause
+bindld = , XF86AudioPrev, Previous track, exec, $osdclient --playerctl previous
+
+# Switch audio output with Super + Mute
+bindld = SUPER, XF86AudioMute, Switch audio output, exec, omarchy-cmd-audio-switch
+EOT
+
 cat > ~/.local/share/omarchy/default/hypr/bindings/utilities.conf << 'EOT'
 # Menus
-bindd = SUPER, SPACE, Launch apps, exec, omarchy-launch-walker
-bindd = SUPER CTRL, E, Emoji picker, exec, omarchy-launch-walker -m symbols
-bindd = SUPER ALT, SPACE, Omarchy menu, exec, omarchy-menu
+bindd = SUPER, SPACE, Launch apps, exec, vicinae open
+# bindd = SUPER ALT, SPACE, Omarchy menu, exec, omarchy-menu
+# bindd = SUPER CTRL, E, Emoji picker, exec, omarchy-launch-walker -m symbols
 bindd = SUPER, ESCAPE, Power menu, exec, omarchy-menu system
 bindld = , XF86PowerOff, Power menu, exec, omarchy-menu system
 bindd = SUPER, K, Show key bindings, exec, omarchy-menu-keybindings
-bindd = , XF86Calculator, Calculator, exec, gnome-calculator
+# bindd = , XF86Calculator, Calculator, exec, gnome-calculator
 
 # Aesthetics
 bindd = SUPER SHIFT, SPACE, Toggle top bar, exec, omarchy-toggle-waybar
@@ -2105,4 +2137,22 @@ bindd = SUPER ALT, S, Share, exec, omarchy-menu share
 # Waybar-less information
 bindd = SUPER CTRL, T, Show time, exec, notify-send "    $(date +"%A %I:%M %p  —  %d %B")"
 bindd = SUPER CTRL, B, Show battery remaining, exec, notify-send "󰁹    Battery is at $(omarchy-battery-remaining)%"
+EOT
+
+cat > ~/.local/share/omarchy/default/hypr/autostart.conf << 'EOT'
+exec-once = uwsm-app -- hypridle
+exec-once = uwsm-app -- mako
+exec-once = uwsm-app -- waybar
+exec-once = uwsm-app -- fcitx5
+exec-once = uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill
+exec-once = uwsm-app -- swayosd-server
+exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = omarchy-cmd-first-run
+
+# Slow app launch fix -- set systemd vars
+exec-once = systemctl --user import-environment $(env | cut -d'=' -f 1)
+exec-once = dbus-update-activation-environment --systemd --all
+
+exec-once = ollama serve
+exec-once = vicinae server
 EOT
