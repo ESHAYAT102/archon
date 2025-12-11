@@ -16,6 +16,7 @@ sudo pacman -Syu --noconfirm
 # 3. INSTALL core packages
 echo "--- Installing core packages..."
 sudo pacman -S --noconfirm flatpak fish ghostty yazi btop cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin cursor-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
+yay -S --noconfirm vicinae-bin
 
 # 6. INSTALL Flatpak applications
 echo "--- Installing Flatpak applications..."
