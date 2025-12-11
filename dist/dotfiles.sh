@@ -1235,6 +1235,32 @@ include "%H/.local/share/omarchy/default/xcompose"
 <Multi_key> <space> <p> : "01946113366"
 EOT
 
+cat > ~/.local/share/omarchy/default/xcompose << 'EOT'
+include "%L"
+
+# Emoji
+<Multi_key> <c> : "😭"
+<Multi_key> <l> : "🤣"
+<Multi_key> <h> : "❤️"
+<Multi_key> <y> : "👍"
+<Multi_key> <n> : "👎"
+<Multi_key> <p> : "🙏"
+<Multi_key> <s> : "🗿"
+<Multi_key> <1> : "💯"
+<Multi_key> <f> : "🔥"
+<Multi_key> <d> : "💀"
+<Multi_key> <w> : "💦"
+<Multi_key> <e> : "🍆"
+<Multi_key> <h> : "🫂"
+<Multi_key> <m> <y> : "✔️"
+<Multi_key> <m> <n> : "❌"
+<Multi_key> <m> <f> : "💐"
+<Multi_key> <m> <l> : "🥰"
+
+# Typography
+<Multi_key> <space> <space> : "—"
+EOT
+
 cat > ~/.config/waybar/config.jsonc << 'EOT'
 {
   "reload_style_on_change": true,
