@@ -1192,7 +1192,7 @@ theme = Catppuccin Mocha
 # Font
 font-family = "Cascadia Code PL"
 font-style = semibold
-font-size = 9
+font-size = 8
 font-feature = +liga, +dlig, +calt
 
 # Window
