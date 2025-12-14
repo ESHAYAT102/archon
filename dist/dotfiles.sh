@@ -2193,6 +2193,9 @@ bind-key z previous-window
 set-option -g status-position top
 
 set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'catppuccin/tmux#v2.1.3'
 set -g default-terminal "tmux-256color"
 set -g @catppuccin_flavor "mocha"
@@ -2203,6 +2206,9 @@ set -g status-left-length 100
 set -g status-left ""
 set -ag status-right "#{E:@catppuccin_status_session}"
 set -ag status-right "#{E:@catppuccin_status_uptime}"
+
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '15'
 
 run '~/.tmux/plugins/tpm/tpm'
 EOT
