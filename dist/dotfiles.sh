@@ -1137,7 +1137,9 @@ alias update "sudo pacman -Syu && yay -Syu"
 
 alias ff fastfetch
 
-alias cls clear
+alias t tmux
+
+alias c clear
 
 alias fishconfig "nvim ~/.config/fish/config.fish"
 
