@@ -9,7 +9,7 @@ echo "--- Updating system packages..."
 sudo pacman -Syu --noconfirm
 
 echo "--- Installing core packages..."
-sudo pacman -S --noconfirm flatpak fish ghostty 7zip yazi btop cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
+sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
 yay -S --noconfirm vicinae-bin
 
 echo "--- Installing Flatpak applications..."
@@ -33,6 +33,9 @@ chsh -s /usr/bin/fish
 echo "--- Configuring global Git settings..."
 git config --global init.defaultBranch main
 git config --global --replace-all credential.helper store
+
+echo "--- Setting up TMUX..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "--- Installing Omarchy Themes..."
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
