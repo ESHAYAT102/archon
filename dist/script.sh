@@ -24,6 +24,9 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "--- Installing Ollama..."
 curl -fsSL https://ollama.com/install.sh | sh
 
+echo "--- Installing Bun..."
+curl -fsSL https://bun.sh/install | bash
+
 echo "--- Changing default shell to Fish..."
 chsh -s /usr/bin/fish
 
