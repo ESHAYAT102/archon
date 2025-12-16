@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo echo '
+echo '
 HandleLidSwitch=ignore
 ' >> /etc/systemd/logind.conf
 
