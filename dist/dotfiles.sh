@@ -2102,9 +2102,8 @@ EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/utilities.conf << 'EOT'
 # Menus
-# Menus
-bindd = ALT, SPACE, Launch apps, exec, vicinae open
-bindd = SUPER, SPACE, Launch apps, exec, omarchy-launch-walker
+bindd = SUPER, SPACE, Launch apps, exec, vicinae open
+# bindd = SUPER, SPACE, Launch apps, exec, omarchy-launch-walker
 bindd = SUPER ALT, SPACE, Omarchy menu, exec, omarchy-menu
 bindd = SUPER CTRL, E, Emoji picker, exec, omarchy-launch-walker -m symbols
 bindd = SUPER, ESCAPE, Power menu, exec, omarchy-menu system
