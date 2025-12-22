@@ -48,8 +48,21 @@ git config --global --replace-all credential.helper store
 echo "--- Setting up TMUX..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "--- Installing Yazi Themes..."
-ya pkg add gosxrgxx/flexoki-dark
+echo "--- Installing Pomo..."
+git clone https://github.com/Bahaaio/pomo
+cd pomo
+go build .
+sudo mv pomo /usr/local/bin/
+cd ..
+rm -rf pomo
+
+echo "--- Installing Stormy..."
+git clone https://github.com/ashish0kumar/stormy.git
+cd stormy
+go build
+sudo mv stormy /usr/local/bin/
+cd ..
+rm -rf stormy
 
 echo "--- Installing Omarchy Themes..."
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
