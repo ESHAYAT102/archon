@@ -68,6 +68,13 @@ echo "--- Installing Omarchy Themes..."
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
 
+echo "--- Installing Magilio Font..."
+git clone https://github.com/ESHAYAT102/magilio-font.git
+cd magilio-font
+mv Magilio.ttf ~/.local/fonts/
+cd ..
+rm -rf magilio-font
+
 echo "--- Setting up dotfiles..."
 curl -s https://archon.eshayat.com/dotfiles.sh | bash
 
