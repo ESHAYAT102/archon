@@ -2,6 +2,14 @@
 
 clear
 
+MUTED='\033[0;2m'
+NC='\033[0m'
+
+echo -e "${MUTED}█▀▀▀ █▀▀▀ █  █ ${NC}█▀▀█ █  █ █▀▀█ ▀▀█▀▀"
+echo -e "${MUTED}█▀▀  ▀▀▀█ █▀▀█ ${NC}█▀▀█ ▀▀▀█ █▀▀█   █ "
+echo -e "${MUTED}▀▀▀▀ ▀▀▀▀ ▀  ▀ ${NC}▀  ▀ ▀▀▀▀ ▀  ▀   ▀ "
+
+
 echo "--- Removing selected packages..."
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop xournalpp typora
 
