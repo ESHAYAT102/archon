@@ -1862,38 +1862,6 @@ cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
 bindd = SUPER, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
 EOT
 
-cat > ~/.local/share/omarchy/default/hypr/bindings/utilities.conf << 'EOT'
-# Only display the OSD on the currently focused monitor
-$osdclient = swayosd-client --monitor "$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')"
-
-# Laptop multimedia keys for volume and LCD brightness (with OSD)
-bindeld = ,XF86AudioRaiseVolume, Volume up, exec, $osdclient --output-volume raise
-bindeld = ,XF86AudioLowerVolume, Volume down, exec, $osdclient --output-volume lower
-bindeld = ,XF86AudioMute, Mute, exec, $osdclient --output-volume mute-toggle
-bindeld = ,XF86AudioMicMute, Mute microphone, exec, $osdclient --input-volume mute-toggle
-bindeld = ,XF86MonBrightnessUp, Brightness up, exec, $osdclient --brightness raise
-bindeld = ,XF86MonBrightnessDown, Brightness down, exec, $osdclient --brightness lower
-
-bindeld = SUPER, page_up, Brightness up, exec, $osdclient --brightness raise
-bindeld = SUPER, page_down, Brightness down, exec, $osdclient --brightness lower
-
-# Precise 1% multimedia adjustments with Alt modifier
-bindeld = ALT, XF86AudioRaiseVolume, Volume up precise, exec, $osdclient --output-volume +1
-bindeld = ALT, XF86AudioLowerVolume, Volume down precise, exec, $osdclient --output-volume -1
-bindeld = ALT, XF86MonBrightnessUp, Brightness up precise, exec, $osdclient --brightness +1
-bindeld = ALT, XF86MonBrightnessDown, Brightness down precise, exec, $osdclient --brightness -1
-
-# Requires playerctl
-bindld = , XF86AudioNext, Next track, exec, $osdclient --playerctl next
-bindld = , XF86AudioPause, Pause, exec, $osdclient --playerctl play-pause
-bindld = , XF86AudioPlay, Play, exec, $osdclient --playerctl play-pause
-bindld = , XF86AudioPrev, Previous track, exec, $osdclient --playerctl previous
-
-# Switch audio output with Super + Mute
-bindld = SUPER, XF86AudioMute, Switch audio output, exec, omarchy-cmd-audio-switch
-' > ~/.local/share/omarchy/default/hypr/bindings/media.conf
-EOT
-
 cat > ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf << 'EOT'
 # Close windows
 bindd = SUPER, Q, Close active window, killactive,
@@ -2105,9 +2073,9 @@ EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/utilities.conf << 'EOT'
 # Menus
-bindd = SUPER, SPACE, Launch apps, exec, vicinae open
+bindd = ALT, SPACE, Launch apps, exec, vicinae open
 # bindd = SUPER, SPACE, Launch apps, exec, omarchy-launch-walker
-bindd = SUPER ALT, SPACE, Omarchy menu, exec, omarchy-menu
+bindd = SUPER, SPACE, Omarchy menu, exec, omarchy-menu
 bindd = SUPER CTRL, E, Emoji picker, exec, omarchy-launch-walker -m symbols
 bindd = SUPER, ESCAPE, Power menu, exec, omarchy-menu system
 bindld = , XF86PowerOff, Power menu, exec, omarchy-menu system
