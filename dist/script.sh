@@ -29,6 +29,12 @@ echo "" >> "$HOME/.config/fish/config.fish"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.config/fish/config.fish"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+echo "--- Installing Spicetify..."
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+spicetify backup apply
+
 echo "--- Installing Ollama..."
 curl -fsSL https://ollama.com/install.sh | sh
 
