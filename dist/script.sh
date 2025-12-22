@@ -27,6 +27,9 @@ curl -fsSL https://ollama.com/install.sh | sh
 echo "--- Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 
+echo "--- Installing OpenCode..."
+curl -fsSL https://opencode.ai/install | bash
+
 echo "--- Changing default shell to Fish..."
 chsh -s /usr/bin/fish
 
