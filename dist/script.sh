@@ -37,6 +37,9 @@ git config --global --replace-all credential.helper store
 echo "--- Setting up TMUX..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+echo "--- Installing Yazi Themes..."
+ya pkg add gosxrgxx/flexoki-dark
+
 echo "--- Installing Omarchy Themes..."
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
