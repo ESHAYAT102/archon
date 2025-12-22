@@ -1429,7 +1429,7 @@ cat > ~/.config/waybar/style.css << 'EOT'
 
 * {
     background-color: transparent;
-    color: #cdd6f4;
+    color: @foreground;
     border: none;
     border-radius: 0;
     min-height: 0;
