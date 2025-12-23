@@ -12,6 +12,7 @@ echo -e "${MUTED}▀▀▀▀ ▀▀▀▀ ▀  ▀ ${NC}▀  ▀ ▀▀▀▀ �
 
 echo "--- Removing selected packages..."
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop xournalpp typora
+rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Updating system packages..."
 sudo pacman -Syu --noconfirm
