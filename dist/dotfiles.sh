@@ -820,6 +820,7 @@ bindd = SUPER, C, Code Editor, exec, code
 # bindd = SUPER, A, Steam, exec, steam
 bindd = SUPER, G, Gapless, exec, flatpak run com.github.neithern.g4music
 bindd = SUPER, D, Discord, exec, $terminal discordo
+bindd = SUPER SHIFT, D, Discord, exec, flatpak run com.discordapp.Discord
 EOT
 
 cat > ~/.config/hypr/hypridle.conf << 'EOT'
