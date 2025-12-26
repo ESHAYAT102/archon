@@ -859,7 +859,8 @@ animations {
     enabled = true
 }
 
-$accent = $font_color
+$accent = $color
+$alt = $font_color
 # $font = JetBrainsMono Nerd Font ExtraBold
 # font_family = CaskaydiaMono Nerd Font ExtraBold
 $font = Magilio
@@ -910,9 +911,9 @@ input-field {
   dots_spacing = 0.2
   dots_center = true
   font_family = $font
-  outer_color = $accent
+  outer_color = $font_color
   inner_color = $color
-  font_color = $accent
+  font_color = $font_color
   fade_on_empty = false
   placeholder_text = $USER
   hide_input = false
