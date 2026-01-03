@@ -893,7 +893,7 @@ label {
 # DATE
 label {
   monitor =
-  text = cmd[update:43200000] date +"%A, %d %B %Y"
+  text = cmd[update:1000] date +"%A, %d %B %Y"
   color = $accent
   font_size = 32
   font_family = $font
