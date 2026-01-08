@@ -1839,6 +1839,7 @@ echo '
 
 echo '
 exec-once = ollama serve
+exec-once = vicinae server
 ' >> ~/.local/share/omarchy/default/hypr/autostart.conf
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
