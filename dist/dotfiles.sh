@@ -954,9 +954,6 @@ input {
   }
 }
 
-# Scroll faster in the terminal
-windowrule = scrolltouchpad 1.5, tag:terminal
-
 # Enable touchpad gestures for changing workspaces
 # See https://wiki.hyprland.org/Configuring/Gestures/
 gesture = 3, horizontal, workspace
