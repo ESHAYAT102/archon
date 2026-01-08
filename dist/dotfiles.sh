@@ -1429,6 +1429,8 @@ EOT
 cat > ~/.config/waybar/style.css << 'EOT'
 @import "../omarchy/current/theme/waybar.css";
 
+@define-color waybarBg rgba(38,38,38,0.3);
+
 * {
     background-color: transparent;
     color: @foreground;
@@ -1438,6 +1440,10 @@ cat > ~/.config/waybar/style.css << 'EOT'
     font-family: "CaskaydiaMono Nerd Font";
     font-size: 14px;
     font-weight: 900;
+}
+
+#waybar {
+  background-color: @waybarBg;
 }
 
 .modules-left {
