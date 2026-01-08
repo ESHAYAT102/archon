@@ -1429,7 +1429,7 @@ EOT
 cat > ~/.config/waybar/style.css << 'EOT'
 @import "../omarchy/current/theme/waybar.css";
 
-@define-color waybarBg rgba(38,38,38,0.3);
+@define-color waybar_bg rgba(38,38,38,0.3);
 
 * {
     background-color: transparent;
@@ -1443,7 +1443,7 @@ cat > ~/.config/waybar/style.css << 'EOT'
 }
 
 #waybar {
-  background-color: @waybarBg;
+  background-color: @waybar_bg;
 }
 
 .modules-left {
