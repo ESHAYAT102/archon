@@ -1841,20 +1841,6 @@ echo '
 exec-once = ollama serve
 ' >> ~/.local/share/omarchy/default/hypr/autostart.conf
 
-cat > ~/.local/share/omarchy/default/hypr/windows.conf << 'EOT'
-# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-windowrule = suppressevent maximize, class:.*
-
-# Just dash of opacity by default
-windowrule = opacity 0.9 0.87, class:.*
-
-# Fix some dragging issues with XWayland
-windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
-
-# App-specific tweaks
-source = ~/.local/share/omarchy/default/hypr/apps.conf
-EOT
-
 cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
 bindd = SUPER, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
 EOT
