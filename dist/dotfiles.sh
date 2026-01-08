@@ -1776,7 +1776,6 @@ cat > ~/.config/omarchy/branding/arch_mini.txt << 'EOT'
 EOT
 
 echo '
-
 ████████  ████████  ██    ██
 ██        ██        ██    ██
 ██████    ████████  ████████
@@ -1784,7 +1783,6 @@ echo '
 ████████  ████████  ██    ██
 
 ████████████████████████████
-
 ' > ~/.config/omarchy/branding/esh.txt
 
 echo '
