@@ -1270,7 +1270,7 @@ include "%L"
 <Multi_key> <k> : "🥰"
 <Multi_key> <b> : "💔"
 <Multi_key> <v> : "💐"
-<Multi_key> <x> : "💥"
+<Multi_key> <z> : "💥"
 
 # Typography
 <Multi_key> <space> <space> : "—"
