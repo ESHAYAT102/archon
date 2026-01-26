@@ -2244,3 +2244,73 @@ set -g @continuum-save-interval '15'
 
 run '~/.tmux/plugins/tpm/tpm'
 EOT
+
+echo '
+{
+  "show_edit_predictions": false,
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "minimap": {
+    "show": "always"
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "terminal": {
+    "cursor_shape": "bar"
+  },
+  "sticky_scroll": {
+    "enabled": false
+  },
+  "cursor_blink": true,
+  "buffer_font_fallbacks": [
+    "Consolas",
+    "Courier New",
+    "monospace"
+  ],
+  "buffer_font_family": "Cascadia Code PL",
+  "linked_edits": true,
+  "soft_wrap": "editor_width",
+  "icon_theme": "Symbols Icon Theme",
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Catppuccin Espresso (Blur) [Heavy]",
+  },
+}
+' > ~/.config/zed/settings.json
+
+echo '
+[
+  {
+    "bindings": {
+      "ctrl-q": "workspace::ToggleLeftDock",
+      "ctrl-b": "workspace::ToggleRightDock",
+
+      "ctrl-alt-shift-q": "zed::Quit",
+
+      "alt-up": "editor::MoveLineUp",
+      "alt-down": "editor::MoveLineDown",
+
+      "alt-shift-up": "editor::DuplicateLineUp",
+      "alt-shift-down": "editor::DuplicateLineDown",
+
+      "alt-ctrl-shift-up": "editor::AddSelectionAbove",
+      "alt-ctrl-shift-down": "editor::AddSelectionBelow",
+    },
+  },
+]
+' > ~/.config/zed/settings.json
