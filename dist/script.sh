@@ -18,7 +18,7 @@ echo "--- Updating system packages..."
 sudo pacman -Syu --noconfirm
 
 echo "--- Installing core packages..."
-sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
+sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
 yay -S --noconfirm vicinae-bin
 
 echo "--- Installing Flatpak applications..."
