@@ -2090,7 +2090,7 @@ bindd = SHIFT CTRL, F2, Apple Display full brightness, exec, omarchy-cmd-apple-d
 
 # Captures
 bindd = SUPER SHIFT, R, Screenrecording, exec, omarchy-menu screenrecord
-bindd = SUPER SHIFT, S, Screenshot, exec, hyprshot -m region
+bindd = SUPER SHIFT, S, Screenshot, exec, screenshot-with-hyprshot-and-satty
 bindd = SUPER SHIFT, C, Color picking, exec, pkill hyprpicker || hyprpicker -a
 
 # File sharing
@@ -2314,3 +2314,16 @@ echo '
   },
 ]
 ' > ~/.config/zed/settings.json
+
+echo '
+#!/bin/sh
+
+DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$DIR"
+
+grim -g "$(slurp)" - | satty --filename - \
+  --output-filename "$DIR/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png" \
+  --early-exit \
+  --actions-on-enter save-to-clipboard \
+  --save-after-copy
+' > ~/.local/bin/screenshot-with-hyprshot-and-satty
