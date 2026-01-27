@@ -2249,7 +2249,6 @@ echo '
 {
   "auto_indent": true,
   "hard_tabs": false,
-  "tab_size": 2,
   "vim": {
     "use_smartcase_find": true,
     "toggle_relative_line_numbers": true
