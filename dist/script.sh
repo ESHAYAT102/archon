@@ -88,4 +88,6 @@ rm -rf fonts
 echo "--- Setting up dotfiles..."
 curl -s https://archon.eshayat.com/dotfiles.sh | bash
 
+chmod +x ~/.local/bin/screenshot-with-hyprshot-and-satty
+
 echo "--- Script finished! Please reboot."
