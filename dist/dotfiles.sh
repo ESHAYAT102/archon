@@ -1848,6 +1848,7 @@ bindd = SUPER, C, Universal copy, sendshortcut, CTRL, Insert,
 bindd = SUPER, V, Universal paste, sendshortcut, SHIFT, Insert,
 bindd = SUPER, X, Universal cut, sendshortcut, CTRL, X,
 bindd = SUPER ALT, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
+bindd = SUPER CTRL, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
 EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf << 'EOT'
