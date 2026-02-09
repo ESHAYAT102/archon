@@ -2094,16 +2094,21 @@ bindd = CTRL, F2, Apple Display brightness up, exec, omarchy-cmd-apple-display-b
 bindd = SHIFT CTRL, F2, Apple Display full brightness, exec, omarchy-cmd-apple-display-brightness +60000
 
 # Captures
-bindd = SUPER SHIFT, R, Screenrecording, exec, omarchy-menu screenrecord
-bindd = SUPER SHIFT, S, Screenshot, exec, screenshot-with-hyprshot-and-satty
-bindd = SUPER SHIFT, C, Color picking, exec, pkill hyprpicker || hyprpicker -a
+bindd = CTRL, Print, Screenrecording, exec, omarchy-menu screenrecord
+bindd = , Print, Screenshot, exec, screenshot
+bindd = SUPER, Print, Screenshot, exec, area-screenshot
+bindd = ALT, Print, Color picking, exec, pkill hyprpicker || hyprpicker -a
 
 # File sharing
-bindd = SUPER ALT, S, Share, exec, omarchy-menu share
+# bindd = SUPER ALT, S, Share, exec, omarchy-menu share
 
 # Waybar-less information
-bindd = SUPER CTRL, T, Show time, exec, notify-send "    $(date +"%A %I:%M %p  —  %d %B")"
-bindd = SUPER CTRL, B, Show battery remaining, exec, notify-send "󰁹    Battery is at $(omarchy-battery-remaining)%"
+bindd = SUPER ALT, T, Show time, exec, notify-send "    $(date +"%A %I:%M %p  —  %d %B")"
+bindd = SUPER ALT, B, Show battery remaining, exec, notify-send "󰁹    Battery is at $(omarchy-battery-remaining)%"
+
+# Others
+bindd = SUPER CTRL, W, Open WiFi, exec, omarchy-launch-wifi
+bindd = SUPER CTRL, B, Open Bluetooth, exec, omarchy-launch-bluetooth
 EOT
 
 cat > ~/.local/share/omarchy/default/hypr/autostart.conf << 'EOT'
@@ -2349,6 +2354,27 @@ mkdir -p "$DIR"
 
 FILE="$DIR/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
+grim "$FILE" || exit 1
+
+satty \
+  --filename "$FILE" \
+  --output-filename "$FILE" \
+  --early-exit
+
+if [ -f "$FILE" ]; then
+    wl-copy --type image/png < "$FILE"
+    rm "$FILE"
+fi
+' > ~/.local/bin/screenshot
+
+echo '
+#!/bin/sh
+
+DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$DIR"
+
+FILE="$DIR/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
 grim -g "$(slurp)" "$FILE" || exit 1
 
 satty \
@@ -2359,4 +2385,4 @@ satty \
 wl-copy --type image/png < "$FILE"
 
 rm -rf "$FILE"
-' > ~/.local/bin/screenshot-with-hyprshot-and-satty
+' > ~/.local/bin/area-screenshot
