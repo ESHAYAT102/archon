@@ -815,7 +815,7 @@ bindd = SUPER, T, Activity, exec, $terminal -e btop
 bindd = SUPER SHIFT, T, Mission Center, exec, flatpak run io.missioncenter.MissionCenter
 # bindd = SUPER, M, Minecraft, exec, java -jar /home/eshayat/Documents/minecraft.jar
 bindd = SUPER, O, Obsidian, exec, omarchy-launch-or-focus obsidian "uwsm app -- obsidian -disable-gpu --enable-wayland-ime"
-bindd = SUPER, A, Code Editor, exec, code
+bindd = SUPER, C, Code Editor, exec, code
 bindd = SUPER, Z, Zed, exec, zed
 bindd = SUPER, B, Brave, exec, brave-browser-nightly
 bindd = SUPER, G, Gapless, exec, flatpak run com.github.neithern.g4music
@@ -1843,12 +1843,7 @@ exec-once = vicinae server
 ' >> ~/.local/share/omarchy/default/hypr/autostart.conf
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
-# Copy / Paste
-bindd = SUPER, C, Universal copy, sendshortcut, CTRL, Insert,
-bindd = SUPER, V, Universal paste, sendshortcut, SHIFT, Insert,
-bindd = SUPER, X, Universal cut, sendshortcut, CTRL, X,
-bindd = SUPER ALT, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
-bindd = SUPER CTRL, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
+bindd = SUPER, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
 EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf << 'EOT'
