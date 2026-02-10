@@ -71,6 +71,9 @@ sudo mv stormy /usr/local/bin/
 cd ..
 rm -rf stormy
 
+echo "--- Installing Jolt..."
+curl -fsSL https://getjolt.sh/install.sh | bash
+
 echo "--- Installing Brave (Nightly)..."
 curl -fsS https://dl.brave.com/install.sh | CHANNEL=nightly sh
 
