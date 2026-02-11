@@ -1204,6 +1204,8 @@ config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 # Looks
 theme = Catppuccin Mocha
+background-opacity = 0.9
+background-blur = true
 
 # Font
 font-family = "Cascadia Code PL"
@@ -1212,8 +1214,8 @@ font-size = 8
 font-feature = +liga, +dlig, +calt
 
 # Window
-window-padding-x = 14
-window-padding-y = 14
+window-padding-x = 16
+window-padding-y = 16
 confirm-close-surface=false
 resize-overlay = never
 
