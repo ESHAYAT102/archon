@@ -800,6 +800,63 @@ exts = [
 ]
 EOT
 
+cat > ~/.config/hypr/scripts/osd.sh << 'EOT'
+#!/bin/bash
+
+TAG="osd_notification" 
+STEP="${2:-5}"
+ICON_DIR="$HOME/.config/hypr/icons"
+
+send_notification() {
+    local label=$1
+    local value=$2
+    local icon_file=$3
+    
+    notify-send -e -h string:x-canonical-private-synchronous:$TAG \
+        -h int:value:"$value" \
+        -u low \
+        -i "$ICON_DIR/$icon_file" \
+        "$label" "$value%"
+}
+
+case $1 in
+    vol-up)
+        pamixer -u && pamixer -i "$STEP"
+        send_notification "Volume" "$(pamixer --get-volume)" "volume-up.svg"
+        ;;
+    vol-down)
+        pamixer -u && pamixer -d "$STEP"
+        send_notification "Volume" "$(pamixer --get-volume)" "volume-down.svg"
+        ;;
+    vol-mute)
+        pamixer -t
+        if [ "$(pamixer --get-mute)" = "true" ]; then
+            send_notification "Muted" "0" "volume-muted.svg"
+        else
+            send_notification "Volume" "$(pamixer --get-volume)" "volume-unmute.svg"
+        fi
+        ;;
+    mic-mute)
+        pamixer --default-source -t
+        if [ "$(pamixer --default-source --get-mute)" = "true" ]; then
+            send_notification "Microphone" "0" "mic-muted.svg"
+        else
+            send_notification "Microphone" "100" "mic.svg"
+        fi
+        ;;
+    bright-up)
+        brightnessctl set "$STEP"%+
+        BRIGHT=$(brightnessctl -m | cut -d, -f4 | tr -d %)
+        send_notification "Brightness" "$BRIGHT" "brightness-up.svg"
+        ;;
+    bright-down)
+        brightnessctl set "$STEP"%-
+        BRIGHT=$(brightnessctl -m | cut -d, -f4 | tr -d %)
+        send_notification "Brightness" "$BRIGHT" "brightness-down.svg"
+        ;;
+esac
+EOT
+
 cat > ~/.config/hypr/bindings.conf << 'EOT'
 $terminal = uwsm app -- $TERMINAL
 
@@ -822,6 +879,20 @@ bindd = SUPER, B, Brave, exec, brave-browser-nightly
 bindd = SUPER, G, Gapless, exec, flatpak run com.github.neithern.g4music
 bindd = SUPER, D, Discord, exec, flatpak run com.discordapp.Discord
 bindd = SUPER ALT, S, Share, exec, localsend
+
+# Volume control
+bindle = , XF86AudioRaiseVolume, exec, ~/.config/hypr/scripts/osd.sh vol-up
+bindle = , XF86AudioLowerVolume, exec, ~/.config/hypr/scripts/osd.sh vol-down
+bindl  = , XF86AudioMute, exec, ~/.config/hypr/scripts/osd.sh vol-mute
+bindl  = , XF86AudioMicMute, exec, ~/.config/hypr/scripts/osd.sh mic-mute
+bindle = ALT, XF86AudioRaiseVolume, exec, ~/.config/hypr/scripts/osd.sh vol-up 1
+bindle = ALT, XF86AudioLowerVolume, exec, ~/.config/hypr/scripts/osd.sh vol-down 1
+
+# Screen Brightness
+bindle = , XF86MonBrightnessUp, exec, ~/.config/hypr/scripts/osd.sh bright-up
+bindle = , XF86MonBrightnessDown, exec, ~/.config/hypr/scripts/osd.sh bright-down
+bindle = ALT, XF86MonBrightnessUp, exec, ~/.config/hypr/scripts/osd.sh bright-up 1
+bindle = ALT, XF86MonBrightnessDown, exec, ~/.config/hypr/scripts/osd.sh bright-down 1
 EOT
 
 cat > ~/.config/hypr/hypridle.conf << 'EOT'
@@ -1883,7 +1954,6 @@ exec-once = uwsm-app -- swaync
 exec-once = uwsm-app -- waybar
 exec-once = uwsm-app -- fcitx5
 exec-once = uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill
-exec-once = uwsm-app -- swayosd-server
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = omarchy-cmd-first-run
 
@@ -2157,24 +2227,6 @@ bindd = SUPER ALT, B, Show battery remaining, exec, notify-send "󰁹    Battery
 # Others
 bindd = SUPER CTRL, W, Open WiFi, exec, omarchy-launch-wifi
 bindd = SUPER CTRL, B, Open Bluetooth, exec, omarchy-launch-bluetooth
-EOT
-
-cat > ~/.local/share/omarchy/default/hypr/autostart.conf << 'EOT'
-exec-once = uwsm-app -- hypridle
-exec-once = uwsm-app -- mako
-exec-once = uwsm-app -- waybar
-exec-once = uwsm-app -- fcitx5
-exec-once = uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill
-exec-once = uwsm-app -- swayosd-server
-exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec-once = omarchy-cmd-first-run
-
-# Slow app launch fix -- set systemd vars
-exec-once = systemctl --user import-environment $(env | cut -d'=' -f 1)
-exec-once = dbus-update-activation-environment --systemd --all
-
-exec-once = ollama serve
-exec-once = vicinae server
 EOT
 
 cat > ~/.tmux.conf << 'EOT'
@@ -2504,7 +2556,7 @@ cat > ~/.config/swaync/style.css << 'EOT'
 @define-color background-alt  #1e1e2e;
 @define-color selected        alpha(@text-alt, .4);
 @define-color hover           alpha(@selected, .4);
-@define-color border     #cba6f766;
+@define-color border          #cba6f766;
 
 * {
   color: @text;
@@ -2515,7 +2567,6 @@ cat > ~/.config/swaync/style.css << 'EOT'
   font-weight: 700;
 }
 
-/* Main Window */
 .control-center {
   background: @bg-color;
   border-radius: 15px;
@@ -2628,13 +2679,11 @@ cat > ~/.config/swaync/style.css << 'EOT'
   margin: 7px 0;
 }
 
-/* I dont want to see close buttons in notification center */
 .control-center .notification-background .close-button,
 .notification-group-close-button {
   opacity: 0;
 }
 
-/* Notifications expanded-group */
 .notification-group {
   margin: 0px 8px;
 }
@@ -2824,14 +2873,23 @@ cat > ~/.config/swaync/style.css << 'EOT'
   color: @background;
 }
 
-/* Change color for plaseholder when no notifications */
 .control-center-list-placeholder {
   color: @text;
 }
 
-/* Avoid 'annoying' backgroud */
 .blank-window {
   background: transparent;
+}
+
+.notification-content image {
+    margin: 10px;
+    -gtk-icon-size: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.notification-icon {
+    margin: 5px;
 }
 EOT
 
