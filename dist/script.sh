@@ -9,13 +9,12 @@ echo -e "${MUTED}█▀▀▀ █▀▀▀ █  █ ${NC}█▀▀█ █  █ �
 echo -e "${MUTED}█▀▀  ▀▀▀█ █▀▀█ ${NC}█▀▀█ ▀▀▀█ █▀▀█   █ "
 echo -e "${MUTED}▀▀▀▀ ▀▀▀▀ ▀  ▀ ${NC}▀  ▀ ▀▀▀▀ ▀  ▀   ▀ "
 
+echo "--- Updating system packages..."
+sudo pacman -Syu --noconfirm
 
 echo "--- Removing selected packages..."
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop xournalpp typora
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
-
-echo "--- Updating system packages..."
-sudo pacman -Syu --noconfirm
 
 echo "--- Installing core packages..."
 sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
@@ -35,9 +34,6 @@ sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 spicetify backup apply
-
-echo "--- Installing Ollama..."
-curl -fsSL https://ollama.com/install.sh | sh
 
 echo "--- Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
@@ -84,13 +80,14 @@ omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-the
 echo "--- Installing Magilio Font..."
 git clone https://github.com/ESHAYAT102/fonts.git
 cd fonts
-mv ./* ~/.local/fonts/
+mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
 
 echo "--- Setting up dotfiles..."
 curl -s https://archon.eshayat.com/dotfiles.sh | bash
 
-chmod +x ~/.local/bin/screenshot-with-hyprshot-and-satty
+chmod +x ~/.local/bin/screenshot
+chmod +x ~/.local/bin/area-screenshot
 
 echo "--- Script finished! Please reboot."
