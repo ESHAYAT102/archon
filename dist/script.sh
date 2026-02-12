@@ -77,7 +77,7 @@ echo "--- Installing Omarchy Themes..."
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
 
-echo "--- Installing Magilio Font..."
+echo "--- Installing Fonts..."
 git clone https://github.com/ESHAYAT102/fonts.git
 cd fonts
 mv ./* ~/.local/share/fonts/
@@ -85,12 +85,12 @@ cd ..
 rm -rf fonts
 
 echo "--- Setting up dotfiles..."
+mkdir ~/.config/zen
+mkdir ~/.config/yazi
+
 curl -s https://archon.eshayat.com/dotfiles.sh | bash
 
 chmod +x ~/.local/bin/screenshot
 chmod +x ~/.local/bin/area-screenshot
-
-mkdir ~/.config/zen
-mkdir ~/.config/yazi
 
 echo "--- Script finished! Please reboot."
