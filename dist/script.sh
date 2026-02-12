@@ -13,7 +13,7 @@ echo "--- Updating system packages..."
 sudo pacman -Syu --noconfirm
 
 echo "--- Removing selected packages..."
-sudo pacman -R --noconfirm 1password-cli 1password-beta kdenline limine-snapper-sync signal-desktop xournalpp typora
+sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-sync signal-desktop xournalpp typora
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Installing core packages..."
