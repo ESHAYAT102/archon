@@ -17,7 +17,7 @@ sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Installing core packages..."
-sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
+sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree swaync nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
 yay -S --noconfirm vicinae-bin
 
 echo "--- Installing Flatpak applications..."

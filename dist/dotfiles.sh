@@ -803,6 +803,7 @@ EOT
 cat > ~/.config/hypr/bindings.conf << 'EOT'
 $terminal = uwsm app -- $TERMINAL
 
+bindd = SUPER, A, Notification Center, exec, swaync-client -t -sw
 bindd = SUPER, L, Hyprlock, exec, hyprlock
 bindd = SUPER SHIFT, L, Screensaver, exec, omarchy-launch-screensaver
 bindd = SUPER, return, Terminal, exec, $terminal --working-directory="$(omarchy-cmd-terminal-cwd)"
@@ -810,7 +811,7 @@ bindd = SUPER, E, Yazi, exec, $terminal yazi
 bindd = SUPER SHIFT, E, File manager, exec, uwsm app -- nautilus --new-window
 bindd = SUPER, W, Browser, exec, flatpak run app.zen_browser.zen
 bindd = SUPER SHIFT, W, Private Browser, exec, flatpak run app.zen_browser.zen --private-window
-bindd = SUPER, S, Music, exec, omarchy-launch-or-focus spotify
+bindd = SUPER, S, Music, exec, flatpak run com.spotify.Client
 bindd = SUPER, T, Activity, exec, $terminal -e btop
 bindd = SUPER SHIFT, T, Mission Center, exec, flatpak run io.missioncenter.MissionCenter
 # bindd = SUPER, M, Minecraft, exec, java -jar /home/eshayat/Documents/minecraft.jar
@@ -848,6 +849,30 @@ listener {
 # }
 EOT
 
+cat > ~/.config/hypr/hyprland.conf << 'EOT'
+# Use defaults Omarchy defaults (but don't edit these directly!)
+source = ~/.local/share/omarchy/default/hypr/autostart.conf
+source = ~/.local/share/omarchy/default/hypr/bindings/media.conf
+source = ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf
+source = ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf
+source = ~/.local/share/omarchy/default/hypr/bindings/utilities.conf
+source = ~/.local/share/omarchy/default/hypr/envs.conf
+source = ~/.local/share/omarchy/default/hypr/looknfeel.conf
+source = ~/.local/share/omarchy/default/hypr/input.conf
+source = ~/.local/share/omarchy/default/hypr/windows.conf
+source = ~/.config/omarchy/current/theme/hyprland.conf
+
+# Change your own setup in these files (and overwrite any settings from defaults!)
+source = ~/.config/hypr/monitors.conf
+source = ~/.config/hypr/input.conf
+source = ~/.config/hypr/bindings.conf
+source = ~/.config/hypr/looknfeel.conf
+source = ~/.config/hypr/autostart.conf
+
+# Add any other personal Hyprland configuration below
+# windowrule = workspace 5, match:class qemu
+EOT
+
 cat > ~/.config/hypr/hyprlock.conf << 'EOT'
 source = $HOME/.config/omarchy/current/theme/hyprlock.conf
 
@@ -863,7 +888,7 @@ $accent = $font_color
 $alt = $color
 # $font = JetBrainsMono Nerd Font ExtraBold
 # font_family = CaskaydiaMono Nerd Font ExtraBold
-$font = Magilio
+$font = Stranger Things
 
 # GENERAL
 general {
@@ -990,6 +1015,12 @@ decoration {
         passes = 2
     }
 }
+
+layerrule = blur on, match:namespace swaync-control-center
+layerrule = blur on, match:namespace swaync-notification-window
+
+layerrule = ignore_alpha 0.5, match:namespace swaync-control-center
+layerrule = ignore_alpha 0.5, match:namespace swaync-notification-window
 EOT
 
 cat > ~/.config/hypr/mocha.conf << 'EOT'
@@ -1841,10 +1872,22 @@ echo '
                                        ███   █▀
 ' > ~/.config/omarchy/branding/screensaver_og.txt
 
-echo '
-exec-once = ollama serve
+cat > ~/.local/share/omarchy/default/hypr/autostart.conf << 'EOT'
+exec-once = uwsm-app -- hypridle
+exec-once = uwsm-app -- swaync
+exec-once = uwsm-app -- waybar
+exec-once = uwsm-app -- fcitx5
+exec-once = uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill
+exec-once = uwsm-app -- swayosd-server
+exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = omarchy-cmd-first-run
+
+# Slow app launch fix -- set systemd vars
+exec-once = systemctl --user import-environment $(env | cut -d'=' -f 1)
+exec-once = dbus-update-activation-environment --systemd --all
+
 exec-once = vicinae server
-' >> ~/.local/share/omarchy/default/hypr/autostart.conf
+EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
 bindd = SUPER, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
@@ -2346,7 +2389,7 @@ echo '
 ]
 ' > ~/.config/zed/settings.json
 
-echo '
+cat > ~/.local/bin/screenshot << 'EOT'
 #!/bin/sh
 
 DIR="$HOME/Pictures/Screenshots"
@@ -2365,9 +2408,9 @@ if [ -f "$FILE" ]; then
     wl-copy --type image/png < "$FILE"
     rm "$FILE"
 fi
-' > ~/.local/bin/screenshot
+EOT
 
-echo '
+cat > ~/.local/bin/area-screenshot << 'EOT'
 #!/bin/sh
 
 DIR="$HOME/Pictures/Screenshots"
@@ -2385,4 +2428,405 @@ satty \
 wl-copy --type image/png < "$FILE"
 
 rm -rf "$FILE"
-' > ~/.local/bin/area-screenshot
+EOT
+
+cat > ~/.config/swaync/config.json << 'EOT'
+{
+    "$schema": "/etc/xdg/swaync/configschema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "cssPriority": "user",
+    "control-center-width": 450,
+    "fit-to-screen": true,
+
+    "notification-window-width": 400,
+    "notification-icon-size": 40,
+    "notification-body-image-height": 500,
+    "notification-body-image-width": 500,
+    "notification-inline-replies": true,
+    "notification-2fa-action": false,
+  
+    "timeout": 3,
+    "timeout-low": 2,
+    "timeout-critical": 6,
+    
+    "keyboard-shortcuts": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": false,
+    "hide-on-action": false,
+    "script-fail-notify": true,
+
+    "widgets": [
+      "volume",
+      "mpris",
+      "dnd",
+      "notifications"
+    ],
+   
+    "widget-config": {
+        "backlight": {
+            "device": "amdgpu_bl1",
+            "label": "󰃠",
+            "slider": true,
+            "min": 10
+        },
+        "volume": {
+            "device": "default",
+            "label": "",
+            "slider": true
+        },
+        "dnd": {
+            "text": "Do not disturb"
+        },
+
+        "mpris": {
+            "image-size": 100,
+            "image-radius": 10,
+            "autohide": false,
+            "blacklist": [ "org.mpris.MediaPlayer2.playerctld"]
+        }
+   }
+}
+EOT
+
+cat > ~/.config/swaync/style.css << 'EOT'
+@define-color center-bg       #0e0e14;
+@define-color bg-color        @center-bg;
+@define-color background      #cba6f7;
+@define-color text            #cdd6f4;
+@define-color text-alt        #cdd6f4;
+@define-color background-alt  #1e1e2e;
+@define-color selected        alpha(@text-alt, .4);
+@define-color hover           alpha(@selected, .4);
+@define-color border     #cba6f766;
+
+* {
+  color: @text;
+  all: unset;
+  font-size: 0.95rem;
+  font-family: "CaskaydiaMono Nerd Font";
+  transition: 200ms;
+  font-weight: 700;
+}
+
+/* Main Window */
+.control-center {
+  background: @bg-color;
+  border-radius: 15px;
+  border: 1px solid @border;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  margin: 8px;
+  padding: 4px 10px;
+  color: @text-color;
+  opacity: 0.7;
+}
+
+.notification {
+  padding: 0 5px;
+  border-radius: 15px;
+  color: @text;
+}
+
+.notification-background {
+  background: @background-alt;
+  box-shadow: none;
+  border-radius: 15px;
+  border: 1px solid @border;
+  margin: 8px;
+  opacity: 0.6;
+}
+
+.notification-row .inline-reply-entry {
+  padding: 5px 10px;
+  background: @background-alt;
+  border-radius: 15px;
+}
+
+.notification-row .inline-reply-button {
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: @hover;
+}
+
+.notification-row .inline-reply .inline-reply-button:hover {
+  background: @selected;
+}
+
+.notification .notification-content {
+  margin: 10px;
+}
+
+.notification-content .text-box {
+  margin: 0 0 0 15px;
+}
+
+.notification-content .time {
+  font-size: 0.95rem;
+  padding: 2px 0;
+  font-weight: 800;
+}
+
+.notification .summary {
+  font-weight: 800;
+  margin-bottom: 2px;
+  padding: 2px 0;
+  font-size: 1rem;
+}
+
+.notification .body {
+  color: @text-alt;
+  font-size: 0.8rem;
+}
+
+.notification.critical {
+  border: @text-alt;
+}
+
+.notification.low progress,
+.notification.normal progress,
+.notification.critical progress {
+  background: @selected;
+}
+
+.notification-background .close-button {
+  margin: 6px;
+  padding: 2px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.notification-background .close-button:hover {
+  background: @hover;
+}
+
+.notification > *:last-child > * {
+  min-height: 3.2em;
+}
+
+.notification > *:last-child > * .notification-action {
+  background: @hover;
+  margin: 0 6px 9px 6px;
+  border-radius: 8px;
+}
+
+.notification > *:last-child > * .notification-action:hover {
+  background: @selected;
+}
+
+.notification > *:last-child > * .notification-action:active {
+  background: @selected;
+}
+
+.control-center .notification-background {
+  background: @background-alt;
+  margin: 7px 0;
+}
+
+/* I dont want to see close buttons in notification center */
+.control-center .notification-background .close-button,
+.notification-group-close-button {
+  opacity: 0;
+}
+
+/* Notifications expanded-group */
+.notification-group {
+  margin: 0px 8px;
+}
+
+.notification-group-headers {
+  font-weight: bold;
+  color: @text;
+}
+
+.notification-group-headers > label {
+  margin: 0 3px;
+  font-size: 1rem;
+}
+
+.notification-group-icon {
+  color: @text;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: transparent;
+  color: @text;
+  margin: 4px;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+/* Do not disturb */
+.widget-dnd {
+  padding: 8px 8px 8px 14px;
+  border-radius: 12px;
+  margin: 5px 0;
+  color: @text;
+  background: @background-alt;
+}
+
+.widget-dnd > switch {
+  background: @hover;
+  font-size: initial;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 2px;
+}
+
+.widget-dnd > switch:checked {
+  background: @border;
+}
+
+.widget-dnd > switch:checked:hover {
+  background: @hover;
+}
+
+.widget-dnd > switch slider {
+  background: @text;
+  border-radius: 6px;
+}
+
+.widget-volume,
+.widget-backlight {
+  padding: 8px 14px;
+  margin: 5px 0;
+  border-radius: 12px;
+  color: @text;
+  font-weight: 800;
+  background: @background-alt;
+}
+
+.widget-volume label,
+.widget-backlight label {
+  font-size: 1.1rem;
+}
+
+.widget-volume slider,
+.widget-backlight slider {
+  border-radius: 24px;
+  margin: -8px;
+  background: @text;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.15),
+    0 4px 4px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+  background: @hover;
+  margin-left: 8px;
+  border-radius: 12px;
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+  padding: 3.5px;
+  border-radius: 12px;
+  background: @text;
+}
+
+.widget-dnd switch:hover,
+.widget-buttons-grid button:hover,
+.control-center .notification-group-collapse-button:hover,
+.control-center .notification-group-close-all-button:hover {
+  background: @hover;
+}
+
+.widget-mpris {
+  background: @background-alt;
+  border-radius: 15px;
+  margin: 5px 0;
+  padding: 0 10px;
+}
+
+.mpris-overlay {
+  background: @background-alt;
+}
+
+.widget-mpris-player {
+  background: @background-alt;
+  color: @text;
+  margin: 0 5px;
+  padding: 10px 0 15px;
+}
+
+/* Control buttons for mpris widget */
+.widget-mpris-player .image-button:hover {
+  border-radius: 8px;
+  background: @hover;
+}
+
+.widget-mpris-player button {
+  padding: 5px;
+  margin: 0 2.5px;
+}
+
+.widget-mpris-player .mpris-overlay > box:last-child {
+  border-radius: 16px;
+  padding: 0 5px;
+  background: alpha(@hover, 0.3);
+}
+
+.widget-mpris-album-art {
+  border-radius: 12px;
+  margin: 6px 4px;
+}
+
+.widget-mpris-title,
+.widget-mpris-subtitle {
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+.widget-mpris-title {
+  font-size: 1.2rem;
+}
+
+.widget-mpris-subtitle {
+  font-size: 0.9rem;
+  color: @text-alt;
+}
+
+.widget-buttons-grid {
+  border-radius: 12px;
+  padding: 6px 15px;
+  background: @background-alt;
+}
+
+.widget-buttons-grid button {
+  padding: 10px 10px;
+  margin: 3px;
+  background: @hover;
+  border-radius: 15px;
+}
+
+.widget-buttons-grid button > label {
+  font-size: 16px;
+  color: @text;
+}
+
+.widget-buttons-grid button:hover {
+  background: @selected;
+}
+
+.widget-buttons-grid button:checked {
+  background-color: @text;
+}
+
+.widget-buttons-grid button:checked > label {
+  color: @background;
+}
+
+/* Change color for plaseholder when no notifications */
+.control-center-list-placeholder {
+  color: @text;
+}
+
+/* Avoid 'annoying' backgroud */
+.blank-window {
+  background: transparent;
+}
+EOT
+
