@@ -1531,6 +1531,8 @@ cat > ~/.config/waybar/style.css << 'EOT'
 }
 
 tooltip {
+    background-color: #1e1e2e;
+    border: 1px solid #5D4C80;
     padding: 2px;
 }
 
