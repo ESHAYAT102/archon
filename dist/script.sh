@@ -90,4 +90,7 @@ curl -s https://archon.eshayat.com/dotfiles.sh | bash
 chmod +x ~/.local/bin/screenshot
 chmod +x ~/.local/bin/area-screenshot
 
+mkdir ~/.config/zen
+mkdir ~/.config/yazi
+
 echo "--- Script finished! Please reboot."
