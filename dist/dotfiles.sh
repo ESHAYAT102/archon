@@ -2534,7 +2534,7 @@ cat > ~/.config/swaync/style.css << 'EOT'
   border-radius: 15px;
   border: 1px solid @border;
   margin: 8px;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .notification-row .inline-reply-entry {
