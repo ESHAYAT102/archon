@@ -1848,6 +1848,7 @@ exec-once = vicinae server
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/clipboard.conf << 'EOT'
 bindd = SUPER, V, Clipboard manager, exec, omarchy-launch-walker -m clipboard
+bindd = SUPER SHIFT, V, Clipboard manager, exec, omarchy-launch-walker -m todo
 EOT
 
 cat > ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf << 'EOT'
