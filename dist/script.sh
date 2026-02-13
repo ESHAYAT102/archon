@@ -85,12 +85,12 @@ cd ..
 rm -rf fonts
 
 echo "--- Setting up dotfiles..."
-mkdir ~/.config/zen
-mkdir ~/.config/yazi
-
-curl -s https://archon.eshayat.com/dotfiles.sh | bash
-
-chmod +x ~/.local/bin/screenshot
-chmod +x ~/.local/bin/area-screenshot
+git clone https://github.com/ESHAYAT102/dotfiles.git
+cd dotfiles
+chmod +x install.sh
+./install.sh
+cd ..
+rm -rf dotfiles
 
 echo "--- Script finished! Please reboot."
+
