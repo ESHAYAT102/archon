@@ -17,7 +17,7 @@ sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Installing core packages..."
-sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree swaync nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code
+sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree swaync nano cava cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
 yay -S --noconfirm vicinae-bin tty-clock kew waypaper
 
 echo "--- Installing Flatpak applications..."
@@ -84,10 +84,12 @@ mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
 
-echo "--- Settings up HyprScrolling..."
+echo "--- Settings up HyprPM..."
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm add https://github.com/zakk4223/hyprland-easymotion
 hyprpm enable hyprscrolling
+hyprpm enable hyprEasymotion
 
 echo "--- Setting up dotfiles..."
 git clone https://github.com/ESHAYAT102/dotfiles.git
@@ -98,4 +100,3 @@ cd ..
 rm -rf dotfiles
 
 echo "--- Script finished! Please reboot."
-
