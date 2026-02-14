@@ -84,6 +84,11 @@ mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
 
+echo "--- Settings up HyprScrolling..."
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprscrolling
+
 echo "--- Setting up dotfiles..."
 git clone https://github.com/ESHAYAT102/dotfiles.git
 cd dotfiles
