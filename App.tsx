@@ -13,7 +13,6 @@ const App: React.FC = () => {
         <p className="text-lg md:text-xl text-[#bac2de] mb-8">
           The one-command setup for a clean Omarchy Arch Linux environment.
         </p>
-        <p className="mb-4">Full setup:</p>
         <CodeBlock command={setupCommand} />
       </div>
     </main>
