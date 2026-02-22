@@ -18,7 +18,7 @@ rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Installing core packages..."
 sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck swaync nano cava cmatrix stow element-desktop lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
-yay -S --noconfirm vicinae-bin tty-clock kew waypaper snappy-switcher
+yay -S --noconfirm vicinae-bin tty-clock kew waypaper snappy-switcher omarchist-bin
 
 echo "--- Installing Flatpak applications..."
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
