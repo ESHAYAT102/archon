@@ -74,7 +74,6 @@ echo "--- Installing Brave (Nightly)..."
 curl -fsS https://dl.brave.com/install.sh | CHANNEL=nightly sh
 
 echo "--- Installing Omarchy Themes..."
-omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-green-theme
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
 
 echo "--- Installing Fonts..."
