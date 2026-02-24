@@ -82,7 +82,6 @@ cd fonts
 mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
-fc-cache -fv
 
 echo "--- Settings up HyprPM..."
 hyprpm update
