@@ -38,8 +38,9 @@ spicetify backup apply
 echo "--- Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 
-echo "--- Installing CLI AI Models (Opencode, Copilot, Gemini)..."
-curl -fsSL https://opencode.ai/install | bash
+echo "--- Installing CLI AI Models (Crush, Opencode, Copilot, Gemini)..."
+bun i -g @charmland/crush
+bun i -g opencode-ai
 bun i -g @github/copilot
 bun i -g @google/gemini-cli
 
