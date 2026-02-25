@@ -38,8 +38,10 @@ spicetify backup apply
 echo "--- Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 
-echo "--- Installing OpenCode..."
+echo "--- Installing CLI AI Models (Opencode, Copilot, Gemini)..."
 curl -fsSL https://opencode.ai/install | bash
+bun i -g @github/copilot
+bun i -g @google/gemini-cli
 
 echo "--- Changing default shell to Fish..."
 chsh -s /usr/bin/fish
