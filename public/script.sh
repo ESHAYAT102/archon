@@ -16,7 +16,7 @@ sudo chmod a+wr /opt/spotify/Apps -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 spicetify backup apply
 curl -fsSL https://bun.sh/install | bash
-bun i -g @charmland/crush opencode-ai @github/copilot @google/gemini-cli
+bun i -g @charmland/crush opencode-ai @github/copilot @google/gemini-cli @openai/codex
 chsh -s /usr/bin/fish
 git config --global init.defaultBranch main
 git config --global --replace-all credential.helper store
