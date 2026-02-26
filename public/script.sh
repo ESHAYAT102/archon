@@ -39,10 +39,7 @@ echo "--- Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 
 echo "--- Installing CLI AI Models (Crush, Opencode, Copilot, Gemini)..."
-bun i -g @charmland/crush
-bun i -g opencode-ai
-bun i -g @github/copilot
-bun i -g @google/gemini-cli
+bun i -g @charmland/crush opencode-ai @github/copilot @google/gemini-cli
 
 echo "--- Changing default shell to Fish..."
 chsh -s /usr/bin/fish
