@@ -17,8 +17,8 @@ sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 echo "--- Installing core packages..."
-sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck swaync nano cava cmatrix stow element-desktop lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
-yay -S --noconfirm vicinae-bin tty-clock kew waypaper snappy-switcher
+sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck swaync nano cava cpi cmake cmatrix stow element-desktop lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
+yay -S --noconfirm vicinae-bin tty-clock kew snappy-switcher
 
 echo "--- Installing Flatpak applications..."
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
@@ -102,3 +102,4 @@ cd ..
 rm -rf dotfiles
 
 echo "--- Script finished! Please reboot."
+
