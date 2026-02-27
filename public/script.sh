@@ -5,7 +5,8 @@ sudo pacman -Syu --noconfirm
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck kew swaync nano cava go cpio cmake cmatrix stow element-desktop lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs skate shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
-yay -S --noconfirm vicinae-bin tty-clock snappy-switcher
+yay -S --noconfirm vicinae-bin tty-clock snappy-switcher spicetify-cli
+spicetify backup apply
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "" >> "$HOME/.config/fish/config.fish"
@@ -13,7 +14,6 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.config/
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 spicetify backup apply
 curl -fsSL https://bun.sh/install | bash
 bun i -g @charmland/crush opencode-ai @github/copilot @google/gemini-cli @openai/codex @anthropic-ai/claude-code
