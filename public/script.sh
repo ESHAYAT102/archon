@@ -8,6 +8,10 @@ sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr ba
 yay -S --noconfirm vicinae-bin tty-clock snappy-switcher spicetify-cli
 spicetify backup apply
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
+xdg-settings set default-web-browser app.zen_browser.zen.desktop
+xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/http
+xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
+xdg-mime default app.zen_browser.zen.desktop text/html
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "" >> "$HOME/.config/fish/config.fish"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.config/fish/config.fish"
