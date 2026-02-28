@@ -48,11 +48,6 @@ cd fonts
 mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
-hyprpm update
-hyprpm add https://github.com/hyprwm/hyprland-plugins
-hyprpm add https://github.com/zakk4223/hyprland-easymotion
-hyprpm enable hyprscrolling
-hyprpm enable hyprEasymotion
 git clone https://github.com/ESHAYAT102/dotfiles.git
 cd dotfiles
 chmod +x install.sh
