@@ -5,7 +5,7 @@ sudo pacman -Syu --noconfirm
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck kew swaync nano cava go cpio cmake cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs skate shotwell zip unzip wget curl vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
-yay -S --noconfirm vicinae-bin tty-clock spicetify-cli
+yay -S --noconfirm vicinae-bin tty-clock spicetify-cli crush-bin
 spicetify backup apply
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
 xdg-settings set default-web-browser app.zen_browser.zen.desktop
@@ -20,7 +20,11 @@ sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 spicetify backup apply
 curl -fsSL https://bun.sh/install | bash
-bun i -g @charmland/crush opencode-ai @github/copilot @google/gemini-cli @openai/codex @anthropic-ai/claude-code
+curl -fsSL https://gh.io/copilot-install | bash
+curl -fsSL https://opencode.ai/install | bash
+curl -L code.kimi.com/install.sh | bash
+curl -fsSL https://claude.ai/install.sh | bash
+bun i -g @google/gemini-cli @openai/codex
 chsh -s /usr/bin/fish
 curl -fsSL https://ollama.com/install.sh | sh
 ollama pull deepseek-v3.1:671b-cloud && ollama pull gemma3:27b-cloud && ollama pull gpt-oss:120b-cloud && ollama pull qwen3-coder:480b-cloud && ollama pull mistral-large-3:675b-cloud && ollama pull kimi-k2:1t-cloud && ollama pull kimi-k2-thinking:cloud && ollama pull minimax-m2.1:cloud && ollama pull deepseek-v3.2:cloud && ollama pull glm-4.6:cloud && ollama pull minimax-m2:cloud && ollama pull cogito-2.1:671b-cloud && ollama pull glm-4.7:cloud && ollama pull devstral-2:123b-cloud && ollama pull devstral-small-2:24b-cloud && ollama pull nemotron-3-nano:30b-cloud && ollama pull kimi-k2.5:cloud && ollama pull qwen3-next:80b-cloud && ollama pull ministral-3:14b-cloud && ollama pull qwen3-vl:235b-cloud && ollama pull qwen3-vl:235b-instruct-cloud && ollama pull minimax-m2.5:cloud && ollama pull glm-5:cloud && ollama pull qwen3.5:397b-cloud && ollama pull qwen3-coder-next:cloud && ollama pull gemini-3-flash-preview:latest
