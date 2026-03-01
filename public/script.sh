@@ -46,7 +46,7 @@ cd ..
 rm -rf stormy
 curl -fsSL https://getjolt.sh/install.sh | bash
 curl -fsS https://dl.brave.com/install.sh | CHANNEL=nightly sh
-omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mauve-theme
+omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 git clone https://github.com/ESHAYAT102/fonts.git
 cd fonts
 mv ./* ~/.local/share/fonts/
