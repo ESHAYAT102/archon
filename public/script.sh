@@ -5,7 +5,7 @@ sudo pacman -Syu --noconfirm
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr bat thefuck kew swaync nano cava go cpio cmake cmatrix stow lib32-mesa lib32-vulkan-intel vulkan-intel visual-studio-code-bin glow vhs skate shotwell zip unzip wget curl speedtest-cli vlc hyprshot ttf-firacode-nerd ttf-cascadia-code ttf-iosevka-nerd
-yay -S --noconfirm vicinae-bin tty-clock spicetify-cli crush-bin
+yay -S --noconfirm vicinae-bin tty-clock spicetify-cli crush-bin nautilus-backspace
 spicetify backup apply
 flatpak install --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb -y
 xdg-settings set default-web-browser app.zen_browser.zen.desktop
