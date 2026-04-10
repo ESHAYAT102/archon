@@ -51,6 +51,11 @@ cd fonts
 mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
+cd ~/.config/
+git clone https://github.com/BlueManCZ/hyprmod.git
+cd hyprmod
+uv sync
+cd ~
 git clone https://github.com/ESHAYAT102/dotfiles.git
 cd dotfiles
 chmod +x install.sh
