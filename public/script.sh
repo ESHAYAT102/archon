@@ -8,7 +8,7 @@ sudo pacman -S --noconfirm flatpak fish tmux ghostty 7zip yazi btop tree tldr ba
 yay -S --noconfirm vicinae-bin tty-clock crush-bin nautilus-backspace hyprmoncfg t3code-bin charm-pop-bin
 export FLATPAK_SELF_UPDATE_MODE=check
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 2>/dev/null || true
-flatpak install --system -y --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb
+flatpak install --system -y --or-update com.github.neithern.g4music app.zen_browser.zen com.discordapp.Discord io.missioncenter.MissionCenter com.getpostman.Postman fr.handbrake.ghb dev.geopjr.Calligraphy
 xdg-settings set default-web-browser app.zen_browser.zen.desktop
 xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/http
 xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
