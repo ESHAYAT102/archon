@@ -19,8 +19,7 @@ sudo chmod a+wr /opt/spotify/Apps -R
 spicetify backup apply
 curl -fsSL https://bun.sh/install | bash
 curl -fsSL https://gh.io/copilot-install | bash
-curl -fsSL https://opencode.ai/install | bash
-bun i -g @google/gemini-cli @openai/codex git-open port-whisperer
+bun i -g opencode-ai @google/gemini-cli @openai/codex @github/copilot git-open port-whisperer
 chsh -s /usr/bin/fish
 git config --global init.defaultBranch main
 git config --global --replace-all credential.helper store
