@@ -1,6 +1,20 @@
 #!/bin/bash
 
+print_logo() {
+    cat << "EOF"
+ _______             __                
+|   _   |.----.----.|  |--.-----.-----.
+|       ||   _|  __||     |  _  |     |
+|___|___||__| |____||__|__|_____|__|__|
+                                       
+EOF
+}
+
 clear
+print_logo
+
+set -e
+
 sudo pacman -Syu --noconfirm
 sudo pacman -R --noconfirm 1password-cli 1password-beta kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
