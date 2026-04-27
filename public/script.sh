@@ -37,6 +37,12 @@ cd ..
 rm -rf stormy
 curl -fsSL https://getjolt.sh/install.sh | bash
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
+git clone https://github.com/ESHAYAT102/vicinae-codex-extension.git
+cd vicinae-codex-extension
+bun i
+bun run build
+cd ..
+rm -rf vicinae-codex-extension
 git clone https://github.com/ESHAYAT102/fonts.git
 cd fonts
 mv ./* ~/.local/share/fonts/
