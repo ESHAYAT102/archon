@@ -35,7 +35,7 @@ done
 export FLATPAK_SELF_UPDATE_MODE=check
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 2>/dev/null || true
 for package in ${flatpak_package_install[@]}; do
-  flatpak install --system -y --or-update 
+  flatpak install --system -y --or-update ${package}
 done
 
 xdg-settings set default-web-browser app.zen_browser.zen.desktop
@@ -52,7 +52,9 @@ spicetify restore backup apply
 curl -fsSL https://getjolt.sh/install.sh | bash
 
 curl -fsSL https://bun.sh/install | bash
-bun i -g opencode-ai @google/gemini-cli @openai/codex @github/copilot git-open port-whisperer
+for package in ${bun_package_install[@]}; do
+  bun i -g ${package}
+done
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
