@@ -90,6 +90,7 @@ bun_package_install=(
   @github/copilot
   git-open
   port-whisperer
+  localterm
 )
 
 clear
