@@ -15,8 +15,6 @@ source packages.conf
 clear
 print_logo
 
-set -e
-
 sudo pacman -Syu --noconfirm
 
 for package in ${pacman_packages_remove[@]}; do
