@@ -169,6 +169,7 @@ cd hyprmod
 uv sync
 cd ~
 
+omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
 git clone https://github.com/ESHAYAT102/dotfiles.git
