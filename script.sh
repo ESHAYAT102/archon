@@ -27,7 +27,6 @@ pacman_packages_install=(
   flatpak
   fish
   tmux
-  ghostty
   7zip
   yazi
   btop
