@@ -59,6 +59,7 @@ pacman_packages_install=(
   speedtest-cli
   vlc
   hyprshot
+  uv
   ttf-firacode-nerd
   ttf-cascadia-code
   ttf-iosevka-nerd
