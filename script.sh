@@ -26,6 +26,7 @@ pacman_packages_remove=(
 pacman_packages_install=(
   flatpak
   fish
+  ghostty
   tmux
   7zip
   yazi
