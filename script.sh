@@ -94,6 +94,28 @@ bun_package_install=(
   localterm
 )
 
+setup_tmux_palette() {
+  local install_dir="$HOME/.config/tmux/tmux-palette"
+  local bind_line="bind -n C-p run-shell \"$install_dir/bin/tmux-palette.sh\""
+
+  mkdir -p "$HOME/.config/tmux"
+
+  if [ -d "$install_dir/.git" ]; then
+    git -C "$install_dir" pull
+  else
+    rm -rf "$install_dir"
+    git clone https://github.com/eduwass/tmux-palette "$install_dir"
+  fi
+
+  (cd "$install_dir" && bun install)
+
+  touch "$HOME/.config/tmux/tmux.conf"
+  grep -qxF "$bind_line" "$HOME/.config/tmux/tmux.conf" || printf '\n# Raycast-style command palette\n%s\n' "$bind_line" >> "$HOME/.config/tmux/tmux.conf"
+
+  touch "$HOME/.tmux.conf"
+  grep -qxF 'source-file ~/.config/tmux/tmux.conf' "$HOME/.tmux.conf" || printf 'source-file ~/.config/tmux/tmux.conf\n' >> "$HOME/.tmux.conf"
+}
+
 clear
 print_logo
 
@@ -137,6 +159,7 @@ for package in ${bun_package_install[@]}; do
 done
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+setup_tmux_palette
 
 git clone https://github.com/Bahaaio/pomo
 cd pomo
