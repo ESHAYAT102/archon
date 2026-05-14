@@ -43,7 +43,7 @@ pacman_packages_install=(
   cpio
   cmake
   cmatrix
-  stow
+  asciiquarium
   lib32-mesa
   lib32-vulkan-intel
   vulkan-intel
