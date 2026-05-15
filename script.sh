@@ -82,6 +82,7 @@ flatpak_package_install=(
   io.missioncenter.MissionCenter
   fr.handbrake.ghb
   dev.geopjr.Calligraphy
+  io.ente.photos
 )
 
 bun_package_install=(
