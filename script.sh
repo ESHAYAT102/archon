@@ -93,6 +93,7 @@ bun_package_install=(
   git-open
   port-whisperer
   localterm
+  pnpm
 )
 
 setup_tmux_palette() {
