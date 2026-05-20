@@ -149,6 +149,9 @@ xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
 xdg-mime default app.zen_browser.zen.desktop text/html
 chsh -s /usr/bin/fish
 
+gsettings set org.gtk.gtk4.Settings.Debug enable-inspector-keybinding false
+gsettings set org.gtk.Settings.Debug enable-inspector-keybinding false
+
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
