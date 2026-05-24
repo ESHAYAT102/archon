@@ -209,3 +209,5 @@ chmod +x install.sh
 ./install.sh
 cd ..
 rm -rf dotfiles
+
+sudo chown -R "$USER":"$USER" /opt/visual-studio-code/resources/app/out/vs/code/electron-browser/workbench && code --command extension.updateCustomCSS
