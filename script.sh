@@ -84,6 +84,9 @@ flatpak_package_install=(
   fr.handbrake.ghb
   dev.geopjr.Calligraphy
   io.ente.photos
+  io.github.flattool.Warehouse
+  io.github.anil_e.Codd
+  com.github.tchx84.Flatseal
 )
 
 bun_package_install=(
