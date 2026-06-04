@@ -233,6 +233,28 @@ VSCODE_THEME_HOOK
   "$hook_path"
 }
 
+setup_xdph_no_picker() {
+  local picker_path="$HOME/.local/bin/xdph-no-picker"
+  local xdph_conf="$HOME/.config/hypr/xdph.conf"
+
+  mkdir -p "$HOME/.local/bin" "$HOME/.config/hypr"
+
+  cat >"$picker_path" <<'XDPH_NO_PICKER'
+#!/usr/bin/env bash
+exit 1
+XDPH_NO_PICKER
+  chmod +x "$picker_path"
+
+  cat >"$xdph_conf" <<EOF
+screencopy {
+    allow_token_by_default = true
+    custom_picker_binary = $picker_path
+}
+EOF
+
+  systemctl --user restart xdg-desktop-portal-hyprland.service xdg-desktop-portal.service 2>/dev/null || true
+}
+
 clear
 print_logo
 
@@ -324,4 +346,5 @@ chmod +x install.sh
 cd ..
 rm -rf dotfiles
 
+setup_xdph_no_picker
 setup_vscode_theme_hook
