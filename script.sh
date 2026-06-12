@@ -21,6 +21,7 @@ pacman_packages_remove=(
   mako
   swayosd
   libreoffice-fresh
+  claude-code
 )
 
 pacman_packages_install=(
