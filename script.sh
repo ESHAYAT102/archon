@@ -95,6 +95,7 @@ bun_package_install=(
   opencode-ai
   @google/gemini-cli
   @openai/codex
+  @gitlawb/openclaude@latest
   @github/copilot
   git-open
   port-whisperer
