@@ -93,6 +93,8 @@ flatpak_package_install=(
 )
 
 bun_package_install=(
+  @esyt/milo
+  @esyt/moonify
   opencode-ai
   @google/gemini-cli
   @openai/codex
