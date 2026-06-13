@@ -99,7 +99,7 @@ bun_package_install=(
   @google/gemini-cli
   @openai/codex
   @gitlawb/openclaude@latest
-  @github/copilot
+  @juliusbrussee/caveman-code
   git-open
   port-whisperer
   pake-cli
