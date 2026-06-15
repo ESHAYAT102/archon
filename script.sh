@@ -134,10 +134,11 @@ print_logo
 
 sudo pacman -Syu --noconfirm
 
+omarchy-install-zed
+
 for package in ${pacman_packages_remove[@]}; do
   sudo pacman -R --noconfirm ${package}
 done
-rm -rf ~/.local/share/omarchy/applications/typora.desktop
 
 for package in ${pacman_packages_install[@]}; do
   sudo pacman -S --noconfirm ${package}
@@ -217,3 +218,6 @@ chmod +x install.sh
 ./install.sh
 cd ..
 rm -rf dotfiles
+
+rm -rf ~/.local/share/omarchy/applications/typora.desktop
+rm -rf ~/.local/share/applications/typora.desktop
