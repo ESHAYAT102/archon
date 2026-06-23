@@ -174,6 +174,9 @@ for package in ${bun_package_install[@]}; do
   bun i -g ${package}
 done
 
+bunx skills add jakubkrehel/make-interfaces-feel-better
+codex plugin marketplace add DietrichGebert/ponytail
+
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 setup_tmux_palette
 
