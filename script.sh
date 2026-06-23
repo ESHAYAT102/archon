@@ -167,6 +167,8 @@ sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 spicetify restore backup apply
 
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/install.sh | sh
+
 curl -fsSL https://nubjs.com/install.sh | bash
 
 curl -fsSL https://bun.sh/install | bash
