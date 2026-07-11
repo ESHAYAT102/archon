@@ -169,6 +169,8 @@ spicetify restore backup apply
 
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/install.sh | sh
 
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extension/refs/heads/master/install.sh | bash
+
 curl -fsSL https://nubjs.com/install.sh | bash
 
 curl -fsSL https://bun.sh/install | bash
