@@ -38,6 +38,26 @@ pacman_packages_install=(
   thefuck
   kew
   swaync
+  tailscale
+  pamixer
+  brightnessctl
+  libnotify
+  wl-clipboard
+  playerctl
+  upower
+  bluez-utils
+  networkmanager
+  wireplumber
+  hypridle
+  hyprsunset
+  hyprpicker
+  jq
+  wtype
+  satty
+  scrcpy
+  localsend
+  cliamp
+  obsidian
   nano
   cava
   go
@@ -69,20 +89,23 @@ pacman_packages_install=(
 )
 
 yay_package_install=(
+  quickshell-git
+  voxtype-bin
+  spotify
   vicinae-bin
   tty-clock
   crush-bin
   nautilus-backspace
   hyprmoncfg
-  t3code-bin
+  t3code-nightly-bin
   charm-pop-bin
   terax-bin
 )
 
 flatpak_package_install=(
-  # com.github.neithern.g4music
   app.zen_browser.zen
   com.discordapp.Discord
+  # com.github.neithern.g4music
   # io.missioncenter.MissionCenter
   # fr.handbrake.ghb
   # dev.geopjr.Calligraphy
@@ -146,6 +169,16 @@ done
 for package in ${yay_package_install[@]}; do
   yay -S --noconfirm ${package}
 done
+
+sudo systemctl enable --now tailscaled
+
+mkdir -p "$HOME/.config/voxtype"
+cp /usr/share/omarchy/default/voxtype/config.toml "$HOME/.config/voxtype/config.toml"
+voxtype setup --download --no-post-install
+if omarchy-hw-vulkan; then
+  voxtype setup gpu --enable || true
+fi
+voxtype setup systemd
 
 export FLATPAK_SELF_UPDATE_MODE=check
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 2>/dev/null || true
