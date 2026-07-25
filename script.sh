@@ -271,6 +271,8 @@ gsettings set org.gnome.desktop.interface cursor-size 28
 gsettings set org.gnome.desktop.interface icon-theme 'MacTahoe-purple-dark'
 gsettings set org.gnome.desktop.interface gtk-theme 'MacTahoe-Dark-purple'
 
+sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
+
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
