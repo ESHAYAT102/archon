@@ -265,6 +265,11 @@ sudo ./install.sh
 cd ../..
 rm -rf MacTahoe-icon-theme
 
+gsettings set org.gnome.desktop.interface cursor-theme 'MacTahoe'
+gsettings set org.gnome.desktop.interface cursor-size 28
+gsettings set org.gnome.desktop.interface icon-theme 'MacTahoe-purple-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'MacTahoe-Dark-purple'
+
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
