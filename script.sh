@@ -254,6 +254,7 @@ git clone https://github.com/vinceliuice/MacTahoe-gtk-theme.git
 cd MacTahoe-gtk-theme
 ./install.sh -b -l -t purple -f
 ./tweaks.sh -f
+./tweaks.sh --flatpak -o normal -c dark -t purple
 cd ..
 rm -rf MacTahoe-gtk-theme
 
