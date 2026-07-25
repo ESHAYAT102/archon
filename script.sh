@@ -250,6 +250,21 @@ cd hyprmod
 uv sync
 cd ~
 
+git clone https://github.com/vinceliuice/MacTahoe-gtk-theme.git
+cd MacTahoe-gtk-theme
+./install.sh -b -l -t purple -f
+./tweaks.sh -f
+cd ..
+rm -rf MacTahoe-gtk-theme
+
+git clone https://github.com/vinceliuice/MacTahoe-icon-theme.git
+cd MacTahoe-icon-theme
+./install.sh -t purple
+cd cursors
+sudo ./install.sh
+cd ../..
+rm -rf MacTahoe-icon-theme
+
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
