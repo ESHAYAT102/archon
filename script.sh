@@ -115,7 +115,7 @@ flatpak_package_install=(
   # com.github.tchx84.Flatseal
 )
 
-bun_package_install=(
+nub_package_install=(
   @esyt/milo
   @esyt/moonify
   opencode-ai
@@ -142,7 +142,7 @@ setup_tmux_palette() {
     git clone https://github.com/eduwass/tmux-palette "$install_dir"
   fi
 
-  (cd "$install_dir" && bun install)
+  (cd "$install_dir" && nub i)
 
   touch "$HOME/.config/tmux/tmux.conf"
   grep -qxF "$bind_line" "$HOME/.config/tmux/tmux.conf" || printf '\n# Raycast-style command palette\n%s\n' "$bind_line" >> "$HOME/.config/tmux/tmux.conf"
@@ -207,11 +207,11 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extensi
 curl -fsSL https://nubjs.com/install.sh | bash
 
 curl -fsSL https://bun.sh/install | bash
-for package in ${bun_package_install[@]}; do
-  bun i -g ${package}
+for package in ${nub_package_install[@]}; do
+  nub i -g ${package}
 done
 
-bunx skills add jakubkrehel/make-interfaces-feel-better
+nubx skills add jakubkrehel/make-interfaces-feel-better
 codex plugin marketplace add DietrichGebert/ponytail
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -233,8 +233,8 @@ rm -rf stormy
 
 git clone https://github.com/ESHAYAT102/vicinae-codex-extension.git
 cd vicinae-codex-extension
-bun i
-bun run build
+nub i
+nub run build
 cd ..
 rm -rf vicinae-codex-extension
 
