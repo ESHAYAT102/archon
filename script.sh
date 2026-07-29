@@ -106,6 +106,7 @@ pacman_packages_install=(
 
 yay_package_install=(
   quickshell-git
+  zen-browser-bin
   voxtype-bin
   spotify
   vicinae-bin
@@ -119,7 +120,6 @@ yay_package_install=(
 )
 
 flatpak_package_install=(
-  app.zen_browser.zen
   com.discordapp.Discord
   # com.github.neithern.g4music
   # io.missioncenter.MissionCenter
@@ -209,10 +209,10 @@ for package in ${flatpak_package_install[@]}; do
   flatpak install --system -y --or-update ${package}
 done
 
-xdg-settings set default-web-browser app.zen_browser.zen.desktop
-xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/http
-xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
-xdg-mime default app.zen_browser.zen.desktop text/html
+env -u BROWSER xdg-settings set default-web-browser zen.desktop
+xdg-mime default zen.desktop x-scheme-handler/http
+xdg-mime default zen.desktop x-scheme-handler/https
+xdg-mime default zen.desktop text/html
 chsh -s "$(command -v zsh)"
 
 gsettings set org.gtk.gtk4.Settings.Debug enable-inspector-keybinding false
