@@ -41,19 +41,32 @@ pacman_packages_install=(
   tailscale
   pamixer
   brightnessctl
+  power-profiles-daemon
   libnotify
   wl-clipboard
   playerctl
   upower
   bluez-utils
   networkmanager
+  pipewire
+  pipewire-pulse
   wireplumber
+  udiskie
+  fcitx5
+  fcitx5-gtk
+  fcitx5-qt
   hypridle
+  hyprlock
   hyprsunset
   hyprpicker
   jq
   wtype
   satty
+  grim
+  slurp
+  tesseract
+  tesseract-data-eng
+  gpu-screen-recorder
   scrcpy
   localsend
   cliamp
@@ -83,6 +96,9 @@ pacman_packages_install=(
   vlc
   hyprshot
   uv
+  python-gobject
+  python-cairo
+  gtk-layer-shell
   ttf-firacode-nerd
   ttf-cascadia-code
   ttf-iosevka-nerd
@@ -203,6 +219,10 @@ spicetify restore backup apply
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/install.sh | sh
 
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extension/refs/heads/master/install.sh | bash
+
+curl -fsSL https://herdr.dev/install.sh | sh
+
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
 curl -fsSL https://nubjs.com/install.sh | bash
 
