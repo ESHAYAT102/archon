@@ -172,6 +172,13 @@ print_logo
 
 sudo pacman -Syu --noconfirm
 
+# Drop stale user copies that would shadow the upgraded Omarchy commands.
+for legacy_command in "$HOME/.local/share/omarchy/bin"/omarchy*; do
+  [[ -e $legacy_command ]] || continue
+  [[ -f /usr/share/omarchy/bin/${legacy_command##*/} ]] && rm -f "$legacy_command"
+done
+hash -r
+
 omarchy-install-zed
 
 for package in ${pacman_packages_remove[@]}; do
