@@ -197,6 +197,7 @@ sudo systemctl enable --now tailscaled
 
 mkdir -p "$HOME/.config/voxtype"
 cp /usr/share/omarchy/default/voxtype/config.toml "$HOME/.config/voxtype/config.toml"
+sed -i 's/^mode = "type"$/mode = "clipboard"/' "$HOME/.config/voxtype/config.toml"
 voxtype setup --download --no-post-install
 if omarchy-hw-vulkan; then
   voxtype setup gpu --enable || true
