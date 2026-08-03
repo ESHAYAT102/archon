@@ -131,11 +131,15 @@ flatpak_package_install=(
   # com.github.tchx84.Flatseal
 )
 
+brew_package_install=(
+  codex
+  opencode
+  bun
+)
+
 bun_package_install=(
   @esyt/milo
   @esyt/moonify
-  opencode-ai
-  @openai/codex
   @gitlawb/openclaude@latest
   @juliusbrussee/caveman-code
   git-open
@@ -143,11 +147,6 @@ bun_package_install=(
   pake-cli
   localterm
   pnpm
-)
-
-brew_package_install=(
-  codex
-  opencode
 )
 
 setup_tmux_palette() {
@@ -244,9 +243,6 @@ for package in ${brew_package_install[@]}; do
   brew install ${package}
 done
 
-curl -fsSL https://nubjs.com/install.sh | bash
-
-curl -fsSL https://bun.sh/install | bash
 for package in ${bun_package_install[@]}; do
   bun i -g ${package}
 done
