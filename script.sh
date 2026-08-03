@@ -145,6 +145,11 @@ bun_package_install=(
   pnpm
 )
 
+brew_package_install=(
+  codex
+  opencode
+)
+
 setup_tmux_palette() {
   local install_dir="$HOME/.config/tmux/tmux-palette"
   local bind_line="bind -n C-p run-shell \"$install_dir/bin/tmux-palette.sh\""
@@ -230,7 +235,10 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extensi
 
 curl -fsSL https://herdr.dev/install.sh | sh
 
-curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+for package in ${brew_package_install[@]}; do
+  brew install ${package}
+done
 
 curl -fsSL https://nubjs.com/install.sh | bash
 
