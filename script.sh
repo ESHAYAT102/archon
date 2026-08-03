@@ -135,6 +135,7 @@ brew_package_install=(
   codex
   opencode
   bun
+  gh
 )
 
 bun_package_install=(
