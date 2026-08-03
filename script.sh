@@ -239,6 +239,7 @@ curl -fsSL https://herdr.dev/install.sh | sh
 echo >> $HOME/.zshrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"' >> $HOME/.zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+sudo pacman -S base-devel bubblewrap
 for package in ${brew_package_install[@]}; do
   brew install ${package}
 done
