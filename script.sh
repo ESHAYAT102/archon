@@ -49,6 +49,7 @@ pacman_packages_install=(
   upower
   bluez-utils
   networkmanager
+  alsa-utils
   pipewire
   pipewire-pulse
   wireplumber
@@ -171,6 +172,32 @@ setup_tmux_palette() {
 
   touch "$HOME/.tmux.conf"
   grep -qxF 'source-file ~/.config/tmux/tmux.conf' "$HOME/.tmux.conf" || printf 'source-file ~/.config/tmux/tmux.conf\n' >> "$HOME/.tmux.conf"
+}
+
+configure_microphone() {
+  local alsa_card
+
+  for _ in {1..10}; do
+    wpctl inspect @DEFAULT_AUDIO_SOURCE@ >/dev/null 2>&1 && break
+    sleep 1
+  done
+
+  if ! wpctl inspect @DEFAULT_AUDIO_SOURCE@ >/dev/null 2>&1; then
+    echo "Skipping microphone setup: no default PipeWire input is available."
+    return
+  fi
+
+  alsa_card="$(wpctl inspect @DEFAULT_AUDIO_SOURCE@ | sed -n 's/^[[:space:]]*alsa\.card = "\([0-9][0-9]*\)"$/\1/p' | head -n 1)"
+
+  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0
+
+  if [[ -n $alsa_card ]] && amixer -c "$alsa_card" sget 'Internal Mic Boost' >/dev/null 2>&1; then
+    amixer -c "$alsa_card" sset 'Internal Mic Boost' 1 >/dev/null
+  else
+    echo "Skipping internal microphone boost setup: the control was not found."
+  fi
+
+  wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.50
 }
 
 clear
@@ -323,3 +350,5 @@ rm -rf dotfiles
 
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 rm -rf ~/.local/share/applications/typora.desktop
+
+configure_microphone
