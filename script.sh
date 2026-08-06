@@ -26,6 +26,7 @@ pacman_packages_remove=(
 )
 
 pacman_packages_install=(
+  omarchy-dev
   flatpak
   zsh
   ghostty
@@ -43,6 +44,8 @@ pacman_packages_install=(
   pamixer
   brightnessctl
   power-profiles-daemon
+  polkit-gnome
+  qrencode
   libnotify
   wl-clipboard
   playerctl
@@ -108,6 +111,8 @@ pacman_packages_install=(
 
 yay_package_install=(
   quickshell-git
+  caelestia-cli
+  caelestia-shell
   zen-browser-bin
   voxtype-bin
   spotify
