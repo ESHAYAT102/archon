@@ -30,52 +30,24 @@ pacman_packages_install=(
   flatpak
   zsh
   ghostty
-  tmux
   7zip
   yazi
-  btop
   tree
-  tldr
-  bat
+  cliphist
+  libqalculate
   thefuck
   kew
   swaync
   tailscale
-  pamixer
-  brightnessctl
-  power-profiles-daemon
   polkit-gnome
   qrencode
   libnotify
-  wl-clipboard
   playerctl
   upower
-  bluez-utils
-  networkmanager
-  alsa-utils
-  pipewire
-  pipewire-pulse
-  wireplumber
-  udiskie
-  fcitx5
-  fcitx5-gtk
-  fcitx5-qt
   hypridle
   hyprlock
-  hyprsunset
-  hyprpicker
-  jq
-  wtype
   satty
-  grim
-  slurp
-  tesseract
-  tesseract-data-eng
-  gpu-screen-recorder
   scrcpy
-  localsend
-  cliamp
-  obsidian
   nano
   cava
   go
@@ -85,14 +57,12 @@ pacman_packages_install=(
   asciiquarium
   lib32-mesa
   lib32-vulkan-intel
-  vulkan-intel
   visual-studio-code-bin
   glow
   vhs
   skate
   shotwell
   zip
-  unzip
   wget
   curl
   nodejs
@@ -101,7 +71,6 @@ pacman_packages_install=(
   vlc
   hyprshot
   uv
-  python-gobject
   python-cairo
   gtk-layer-shell
   ttf-firacode-nerd
@@ -128,8 +97,8 @@ yay_package_install=(
 
 flatpak_package_install=(
   com.discordapp.Discord
+  io.missioncenter.MissionCenter
   # com.github.neithern.g4music
-  # io.missioncenter.MissionCenter
   # fr.handbrake.ghb
   # dev.geopjr.Calligraphy
   # io.ente.photos
@@ -155,7 +124,28 @@ bun_package_install=(
   pake-cli
   localterm
   pnpm
+  greptile
+  opencode-ai
+  t3
 )
+
+install_dotfiles() {
+  local dotfiles_dir="$HOME/Documents/dotfiles"
+
+  mkdir -p "$HOME/Documents"
+
+  if [[ -d $dotfiles_dir/.git ]]; then
+    git -C "$dotfiles_dir" pull --ff-only
+  elif [[ -e $dotfiles_dir ]]; then
+    echo "Cannot install dotfiles: $dotfiles_dir exists but is not a Git checkout." >&2
+    return 1
+  else
+    git clone https://github.com/ESHAYAT102/dotfiles.git "$dotfiles_dir"
+  fi
+
+  chmod +x "$dotfiles_dir/install.sh"
+  "$dotfiles_dir/install.sh" --all
+}
 
 setup_tmux_palette() {
   local install_dir="$HOME/.config/tmux/tmux-palette"
@@ -219,16 +209,17 @@ hash -r
 
 omarchy-install-zed
 
-for package in ${pacman_packages_remove[@]}; do
-  sudo pacman -R --noconfirm ${package}
+for package in "${pacman_packages_remove[@]}"; do
+  pacman -Q "$package" >/dev/null 2>&1 || continue
+  sudo pacman -R --noconfirm "$package"
 done
 
-for package in ${pacman_packages_install[@]}; do
-  sudo pacman -S --noconfirm ${package}
+for package in "${pacman_packages_install[@]}"; do
+  sudo pacman -S --needed --noconfirm "$package"
 done
 
-for package in ${yay_package_install[@]}; do
-  yay -S --noconfirm ${package}
+for package in "${yay_package_install[@]}"; do
+  yay -S --needed --noconfirm "$package"
 done
 
 sudo systemctl enable --now tailscaled
@@ -244,8 +235,8 @@ voxtype setup systemd
 
 export FLATPAK_SELF_UPDATE_MODE=check
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 2>/dev/null || true
-for package in ${flatpak_package_install[@]}; do
-  flatpak install --system -y --or-update ${package}
+for package in "${flatpak_package_install[@]}"; do
+  flatpak install --system -y --or-update "$package"
 done
 
 env -u BROWSER xdg-settings set default-web-browser zen.desktop
@@ -269,16 +260,16 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extensi
 curl -fsSL https://herdr.dev/install.sh | sh
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo >> $HOME/.zshrc
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"' >> $HOME/.zshrc
+echo >> "$HOME/.zshrc"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"' >> "$HOME/.zshrc"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-sudo pacman -S base-devel bubblewrap
-for package in ${brew_package_install[@]}; do
-  brew install ${package}
+sudo pacman -S --needed --noconfirm bubblewrap
+for package in "${brew_package_install[@]}"; do
+  brew install "$package"
 done
 
-for package in ${bun_package_install[@]}; do
-  bun i -g ${package}
+for package in "${bun_package_install[@]}"; do
+  bun i -g "$package"
 done
 
 bunx skills add jakubkrehel/make-interfaces-feel-better
@@ -346,12 +337,7 @@ sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override -
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
-git clone https://github.com/ESHAYAT102/dotfiles.git
-cd dotfiles
-chmod +x install.sh
-./install.sh
-cd ..
-rm -rf dotfiles
+install_dotfiles
 
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 rm -rf ~/.local/share/applications/typora.desktop
