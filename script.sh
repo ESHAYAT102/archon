@@ -13,6 +13,7 @@ pacman_packages_install=(
   flatpak
   fish
   ghostty
+  gtk-layer-shell
   tmux
   7zip
   yazi
