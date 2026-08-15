@@ -9,20 +9,6 @@ print_logo() {
 EOF
 }
 
-pacman_packages_remove=(
-  1password-cli
-  1password-beta
-  kdenlive
-  limine-snapper-sync
-  signal-desktop
-  xournalpp
-  typora
-  mako
-  swayosd
-  libreoffice-fresh
-  claude-code
-)
-
 pacman_packages_install=(
   flatpak
   fish
@@ -128,11 +114,14 @@ print_logo
 
 sudo pacman -Syu --noconfirm
 
-omarchy install editor zed
+omarchy remove service 1password
+omarchy webapp remove all
 
 for package in ${pacman_packages_remove[@]}; do
-  sudo pacman -R --noconfirm ${package}
+  sudo pacman -R --noconfirm kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
 done
+
+omarchy install editor zed
 
 for package in ${pacman_packages_install[@]}; do
   sudo pacman -S --noconfirm ${package}
