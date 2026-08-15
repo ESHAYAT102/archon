@@ -135,7 +135,7 @@ print_logo
 
 sudo pacman -Syu --noconfirm
 
-omarchy-install-zed
+omarchy install editor zed
 
 for package in ${pacman_packages_remove[@]}; do
   sudo pacman -R --noconfirm ${package}
@@ -176,20 +176,6 @@ codex plugin marketplace add DietrichGebert/ponytail
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 setup_tmux_palette
-
-git clone https://github.com/Bahaaio/pomo
-cd pomo
-go build .
-sudo mv pomo /usr/local/bin/
-cd ..
-rm -rf pomo
-
-git clone https://github.com/ashish0kumar/stormy.git
-cd stormy
-go build
-sudo mv stormy /usr/local/bin/
-cd ..
-rm -rf stormy
 
 git clone https://github.com/ESHAYAT102/vicinae-codex-extension.git
 cd vicinae-codex-extension
