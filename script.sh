@@ -89,13 +89,6 @@ flatpak_package_install=(
   # com.github.tchx84.Flatseal
 )
 
-brew_package_install=(
-  codex
-  opencode
-  bun
-  gh
-)
-
 bun_package_install=(
   @esyt/milo
   @esyt/moonify
