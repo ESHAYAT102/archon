@@ -172,12 +172,6 @@ mv ./* ~/.local/share/fonts/
 cd ..
 rm -rf fonts
 
-cd ~/.config/
-git clone https://github.com/BlueManCZ/hyprmod.git
-cd hyprmod
-uv sync
-cd ~
-
 git clone https://github.com/vinceliuice/MacTahoe-icon-theme.git
 cd MacTahoe-icon-theme/cursors
 sudo ./install.sh
