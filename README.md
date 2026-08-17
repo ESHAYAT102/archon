@@ -13,8 +13,8 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/s
 
 ```bash
 # try only
-curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-try.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/try.sh | bash
 
 # dictate only
-curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-dictate.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/dictate.sh | bash
 ```
