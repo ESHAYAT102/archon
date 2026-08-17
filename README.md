@@ -8,6 +8,12 @@ Run the `script.sh` script file to install.
 cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh && chmod +x ./script.sh && ./script.sh && rm script.sh
 ```
 
+Or run it directly without downloading:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh | bash
+```
+
 ### Flags
 
 - `./script.sh --try` — run only the `try` workspace-manager setup (installs `tobi-try`, applies an embedded patch to remove date prefixes from new folders, and wires `TRY_NO_DATE` + `try init ~/Work/tries` into your shell config). Self-contained: works from the single-file wget install above.
