@@ -2,7 +2,7 @@
 
 ---
 
-Run the `script.sh` script file to install.
+Run the install script:
 
 ```bash
 cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh && chmod +x ./script.sh && ./script.sh && rm script.sh
@@ -20,15 +20,12 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/s
 - `--dictate` — run only the dictate fix (patches the Omarchy bar's Dictation indicator so clicking the icon toggles dictation instead of opening the VoxType config). Will be overwritten on the next `omarchy update`.
 
 ```bash
-# wget (full install)
-cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh && chmod +x ./script.sh && ./script.sh && rm script.sh
-
-# curl (full install)
+# full install
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh | bash
 
-# curl (try only — no file downloaded)
+# try only
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-try.sh | bash
 
-# curl (dictate only — no file downloaded)
+# dictate only
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-dictate.sh | bash
 ```
