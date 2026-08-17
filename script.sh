@@ -271,6 +271,23 @@ PATCH_EOF
   echo "try: shell integration ensured in ~/.zshrc"
 }
 
+setup_emoji() {
+  local script="/usr/share/omarchy/bin/omarchy-menu-emoji-insert"
+
+  if [ ! -f "$script" ]; then
+    echo "emoji: $script not found — skipping"
+    return 0
+  fi
+
+  if grep -q 'wtype -M ctrl -k v -m ctrl' "$script"; then
+    echo "emoji: already patched (Ctrl+V paste)"
+    return 0
+  fi
+
+  sudo sed -i 's|wtype -M shift -k Insert -m shift|wtype -M ctrl -k v -m ctrl|' "$script"
+  echo "emoji: patched omarchy-menu-emoji-insert — uses Ctrl+V instead of Shift+Insert"
+}
+
 setup_dictate() {
   local qml="/usr/share/omarchy/shell/plugins/bar/indicators/Dictation.qml"
 
@@ -294,11 +311,16 @@ print_logo
 
 case "${1:-}" in
   --try)
-    setup_try
+setup_try
+setup_emoji
     exit 0
     ;;
   --dictate)
     setup_dictate
+    exit 0
+    ;;
+  --emoji)
+    setup_emoji
     exit 0
     ;;
 esac
