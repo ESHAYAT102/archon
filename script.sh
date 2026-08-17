@@ -291,8 +291,7 @@ print_logo
 
 case "${1:-}" in
   --try)
-setup_try
-setup_dictate
+    setup_try
     exit 0
     ;;
   --dictate)

@@ -16,13 +16,19 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/s
 
 ### Flags
 
-- `./script.sh --try` — run only the `try` workspace-manager setup (installs `tobi-try`, applies an embedded patch to remove date prefixes from new folders, and wires `TRY_NO_DATE` + `try init ~/Work/tries` into your shell config). Self-contained: works from the single-file wget install above.
-- `./script.sh --dictate` — run only the dictate fix (patches the Omarchy bar's Dictation indicator so clicking the icon toggles dictation instead of opening the VoxType config). Will be overwritten on the next `omarchy update`.
+- `--try` — run only the `try` workspace-manager setup (installs `tobi-try`, applies an embedded patch to remove date prefixes from new folders, and wires `TRY_NO_DATE` + `try init ~/Work/tries` into your shell config).
+- `--dictate` — run only the dictate fix (patches the Omarchy bar's Dictation indicator so clicking the icon toggles dictation instead of opening the VoxType config). Will be overwritten on the next `omarchy update`.
 
 ```bash
-# wget
-cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh && chmod +x ./script.sh && ./script.sh --try && rm script.sh
+# wget (full install)
+cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh && chmod +x ./script.sh && ./script.sh && rm script.sh
 
-# curl
-curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh -o /tmp/archon.sh && bash /tmp/archon.sh --dictate && rm /tmp/archon.sh
+# curl (full install)
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh | bash
+
+# curl (try only — no file downloaded)
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-try.sh | bash
+
+# curl (dictate only — no file downloaded)
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script-dictate.sh | bash
 ```
