@@ -6,6 +6,9 @@ print_logo() {
 |   _   |.----.----.|  |--.-----.-----.
 |       ||   _|  __||     |  _  |     |
 |___|___||__| |____||__|__|_____|__|__| by Eshayat
+
+  Make sure you are logged in to your Spotify account in the Spotify app.
+  Spicetify will not work without an active Spotify session.
 EOF
 }
 
