@@ -268,12 +268,35 @@ PATCH_EOF
   echo "try: shell integration ensured in ~/.zshrc"
 }
 
+setup_dictate() {
+  local qml="/usr/share/omarchy/shell/plugins/bar/indicators/Dictation.qml"
+
+  if [ ! -f "$qml" ]; then
+    echo "dictate: $qml not found — skipping"
+    return 0
+  fi
+
+  if grep -q 'voxtype record toggle' "$qml"; then
+    echo "dictate: already patched (click toggles dictate)"
+    return 0
+  fi
+
+  sudo sed -i 's|root.bar.run("omarchy-voxtype-config")|root.bar.run("voxtype record toggle")|' "$qml"
+  echo "dictate: patched Dictation.qml — click now toggles dictate"
+  omarchy restart shell 2>/dev/null || true
+}
+
 clear
 print_logo
 
 case "${1:-}" in
   --try)
-    setup_try
+setup_try
+setup_dictate
+    exit 0
+    ;;
+  --dictate)
+    setup_dictate
     exit 0
     ;;
 esac

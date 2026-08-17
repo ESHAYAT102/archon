@@ -11,3 +11,4 @@ cd ~/Downloads && wget https://raw.githubusercontent.com/ESHAYAT102/archon/refs/
 ### Flags
 
 - `./script.sh --try` — run only the `try` workspace-manager setup (installs `tobi-try`, applies an embedded patch to remove date prefixes from new folders, and wires `TRY_NO_DATE` + `try init ~/Work/tries` into your shell config). Self-contained: works from the single-file wget install above.
+- `./script.sh --dictate` — run only the dictate fix (patches the Omarchy bar's Dictation indicator so clicking the icon toggles dictation instead of opening the VoxType config). Will be overwritten on the next `omarchy update`.
