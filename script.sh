@@ -373,12 +373,13 @@ gsettings set org.gnome.desktop.interface cursor-size 28
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
-git clone https://github.com/ESHAYAT102/dotfiles.git
-cd dotfiles
+wget -qO /tmp/dotfiles.zip https://github.com/ESHAYAT102/dotfiles/archive/refs/heads/main.zip
+unzip -qo /tmp/dotfiles.zip -d /tmp
+cd /tmp/dotfiles-main
 chmod +x install.sh
 ./install.sh
-cd ..
-rm -rf dotfiles
+cd /tmp
+rm -rf /tmp/dotfiles-main /tmp/dotfiles.zip
 
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 rm -rf ~/.local/share/applications/typora.desktop
