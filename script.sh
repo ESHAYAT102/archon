@@ -330,6 +330,11 @@ sudo pacman -Syu --noconfirm
 omarchy remove service 1password
 omarchy webapp remove all
 omarchy plugin add https://github.com/brianblakely/omanote.git --enable
+omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
+omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
+omarchy plugin add https://github.com/sumdahl/omarchy-plugin-media.git --enable
+omarchy plugin add https://github.com/28allday/Quattro-GP-Omarchy.git --enable
+omarchy plugin add https://github.com/thepathless/omadock.git --enable
 
 for package in ${pacman_packages_remove[@]}; do
   sudo pacman -R --noconfirm kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
