@@ -410,7 +410,7 @@ wget -qO /tmp/dotfiles.zip https://github.com/ESHAYAT102/dotfiles/archive/refs/h
 unzip -qo /tmp/dotfiles.zip -d /tmp
 cd /tmp/dotfiles-main
 chmod +x install.sh
-./install.sh
+./install.sh --all
 cd /tmp
 rm -rf /tmp/dotfiles-main /tmp/dotfiles.zip
 
