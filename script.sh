@@ -333,8 +333,11 @@ omarchy plugin add https://github.com/brianblakely/omanote.git --enable
 omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
 omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
 omarchy plugin add https://github.com/sumdahl/omarchy-plugin-media.git --enable
-omarchy plugin add https://github.com/28allday/Quattro-GP-Omarchy.git --enable
-omarchy plugin add https://github.com/thepathless/omadock.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/hide-icons-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/ajazz-keyboard-omarchy-plugin.git --enable
+sudo install -Dm644 "$HOME/.config/omarchy/plugins/esh.ajazz-keyboard/udev/70-ajazz-ak820.rules" /etc/udev/rules.d/70-ajazz-ak820.rules
+sudo udevadm control --reload-rules
+sudo udevadm trigger
 
 for package in ${pacman_packages_remove[@]}; do
   sudo pacman -R --noconfirm kdenlive limine-snapper-sync signal-desktop xournalpp typora mako swayosd libreoffice-fresh
