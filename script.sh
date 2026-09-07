@@ -306,6 +306,12 @@ setup_dictate() {
   omarchy restart shell 2>/dev/null || true
 }
 
+setup_power_behavior() {
+  mkdir -p "$HOME/.local/state/omarchy/indicators"
+  touch "$HOME/.local/state/omarchy/indicators/stay-awake"
+  omarchy-toggle suspend-off 2>/dev/null || true
+}
+
 clear
 print_logo
 
@@ -417,4 +423,4 @@ rm -rf ~/.local/share/omarchy/applications/typora.desktop
 rm -rf ~/.local/share/applications/typora.desktop
 
 setup_try
-
+setup_power_behavior
