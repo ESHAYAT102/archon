@@ -338,8 +338,13 @@ omarchy webapp remove all
 omarchy plugin add https://github.com/brianblakely/omanote.git --enable
 omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
 omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
+omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable
 omarchy plugin add https://github.com/sumdahl/omarchy-plugin-media.git --enable
-omarchy plugin add https://github.com/ESHAYAT102/hide-icons-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/confetti-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/orbit-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plugin --enable
+omarchy plugin add https://github.com/ESHAYAT102/ollama-omarchy-plugin.git --enable
+~/.config/omarchy/plugins/esh.ollama/install.sh
 omarchy plugin add https://github.com/ESHAYAT102/ajazz-keyboard-omarchy-plugin.git --enable
 sudo install -Dm644 "$HOME/.config/omarchy/plugins/esh.ajazz-keyboard/udev/70-ajazz-ak820.rules" /etc/udev/rules.d/70-ajazz-ak820.rules
 sudo udevadm control --reload-rules
