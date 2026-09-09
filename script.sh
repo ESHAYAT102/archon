@@ -340,6 +340,8 @@ omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
 omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
 omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable
 omarchy plugin add https://github.com/sumdahl/omarchy-plugin-media.git --enable
+omarchy plugin add https://github.com/Sh3nron/omarchy-aura-blur.git --enable
+~/.config/omarchy/plugins/io.github.sh3nron.aura-blur/setup.sh
 omarchy plugin add https://github.com/ESHAYAT102/confetti-omarchy-plugin.git --enable
 omarchy plugin add https://github.com/ESHAYAT102/orbit-omarchy-plugin.git --enable
 omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plugin --enable
