@@ -338,19 +338,20 @@ omarchy webapp remove all
 omarchy pkg add flea
 flea --default
 systemctl --user restart xdg-desktop-portal
-omarchy plugin add https://github.com/brianblakely/omanote.git --enable
-omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
-omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
-omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable
-omarchy plugin add https://github.com/sumdahl/omarchy-plugin-media.git --enable
-omarchy plugin add https://github.com/Sh3nron/omarchy-aura-blur.git --enable
+omarchy plugin add https://github.com/brianblakely/omanote.git --enable -y
+omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable -y
+omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable -y
+omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable -y
+omarchy plugin add https://github.com/rtome85/omarchy-audio-plus.git --enable -y
+omarchy plugin add https://github.com/claudsondouglas/arc.dock.git --enable -y
+omarchy plugin add https://github.com/Sh3nron/omarchy-aura-blur.git --enable -y
 ~/.config/omarchy/plugins/io.github.sh3nron.aura-blur/setup.sh
-omarchy plugin add https://github.com/ESHAYAT102/confetti-omarchy-plugin.git --enable
-omarchy plugin add https://github.com/ESHAYAT102/orbit-omarchy-plugin.git --enable
-omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plugin --enable
-omarchy plugin add https://github.com/ESHAYAT102/ollama-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/confetti-omarchy-plugin.git --enable -y
+omarchy plugin add https://github.com/ESHAYAT102/orbit-omarchy-plugin.git --enable -y
+omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plugin --enable -y
+omarchy plugin add https://github.com/ESHAYAT102/ollama-omarchy-plugin.git --enable -y
 ~/.config/omarchy/plugins/esh.ollama/install.sh
-omarchy plugin add https://github.com/ESHAYAT102/ajazz-keyboard-omarchy-plugin.git --enable
+omarchy plugin add https://github.com/ESHAYAT102/ajazz-keyboard-omarchy-plugin.git --enable -y
 sudo install -Dm644 "$HOME/.config/omarchy/plugins/esh.ajazz-keyboard/udev/70-ajazz-ak820.rules" /etc/udev/rules.d/70-ajazz-ak820.rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger
