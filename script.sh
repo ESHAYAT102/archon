@@ -335,6 +335,9 @@ sudo pacman -Syu --noconfirm
 
 omarchy remove service 1password
 omarchy webapp remove all
+omarchy pkg add flea
+flea --default
+systemctl --user restart xdg-desktop-portal
 omarchy plugin add https://github.com/brianblakely/omanote.git --enable
 omarchy plugin add https://github.com/GennaroRiccio/update-widget.git --enable
 omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable
