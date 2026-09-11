@@ -344,8 +344,8 @@ omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable 
 omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable -y
 omarchy plugin add https://github.com/rtome85/omarchy-audio-plus.git --enable -y
 omarchy plugin add https://github.com/claudsondouglas/arc.dock.git --enable -y
-omarchy plugin add https://github.com/Sh3nron/omarchy-aura-blur.git --enable -y
-~/.config/omarchy/plugins/io.github.sh3nron.aura-blur/setup.sh
+omarchy plugin add https://github.com/CloudDown/omarchy-cobalt.git --enable -y
+omarchy plugin add https://github.com/iamfitsum/omarchy-proton-vpn.git --enable -y
 omarchy plugin add https://github.com/ESHAYAT102/confetti-omarchy-plugin.git --enable -y
 omarchy plugin add https://github.com/ESHAYAT102/orbit-omarchy-plugin.git --enable -y
 omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plugin --enable -y
