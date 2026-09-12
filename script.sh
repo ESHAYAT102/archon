@@ -113,6 +113,28 @@ setup_tmux_palette() {
   grep -qxF 'source-file ~/.config/tmux/tmux.conf' "$HOME/.tmux.conf" || printf 'source-file ~/.config/tmux/tmux.conf\n' >> "$HOME/.tmux.conf"
 }
 
+setup_arcdock_customizations() {
+  local plugin_dir="$HOME/.config/omarchy/plugins/io.github.claudsondouglas.arcdock"
+  local config_file="$HOME/.config/omarchy/arc-dock.json"
+  local config_tmp
+  local raw_base="https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/arcdock"
+
+  [ -d "$plugin_dir" ] || {
+    echo "arcdock: plugin directory not found, skipping customizations" >&2
+    return 0
+  }
+
+  curl -fsSL "$raw_base/Arcdock.qml" -o "$plugin_dir/Arcdock.qml"
+  curl -fsSL "$raw_base/ArcSlot.qml" -o "$plugin_dir/ArcSlot.qml"
+
+  if [ -f "$config_file" ]; then
+    config_tmp="$(mktemp)"
+    jq '.settings.recentCount = 0' "$config_file" > "$config_tmp"
+    mv "$config_tmp" "$config_file"
+  fi
+  echo "arcdock: Archon customizations installed"
+}
+
 setup_try() {
   local try_rb="/usr/lib/tobi-try/try.rb"
   local patch_file="$(mktemp)"
@@ -344,6 +366,7 @@ omarchy plugin add https://github.com/fernandomenolli/omarchy-sill.git --enable 
 omarchy plugin add https://github.com/TerrifiedBug/omaice.git --enable -y
 omarchy plugin add https://github.com/rtome85/omarchy-audio-plus.git --enable -y
 omarchy plugin add https://github.com/claudsondouglas/arc.dock.git --enable -y
+setup_arcdock_customizations
 omarchy plugin add https://github.com/CloudDown/omarchy-cobalt.git --enable -y
 omarchy plugin add https://github.com/iamfitsum/omarchy-proton-vpn.git --enable -y
 omarchy plugin add https://github.com/AndyWeiBoan/omarchy-mission-control.git --enable -y
