@@ -423,6 +423,13 @@ gsettings set org.gnome.desktop.interface cursor-size 28
 omarchy-font-set "FiraCode Nerd Font"
 omarchy-theme-install https://github.com/ESHAYAT102/omarchy-catppuccin-mocha-theme
 
+git clone https://github.com/ESHAYAT102/MacOS-icon-theme
+cd ./MacOS-icon-theme
+chmod +x install.sh
+./install.sh
+cd ..
+rm -rf ./MacOS-icon-theme
+
 git clone https://github.com/ESHAYAT102/dotfiles
 cd ./dotfiles
 chmod +x install.sh
