@@ -153,6 +153,6 @@ rm -f "$patch_file"
 for f in "$zshrc" "$dot_zshrc"; do
   [ -f "$f" ] || continue
   grep -qxF 'export TRY_NO_DATE=1' "$f" || printf 'export TRY_NO_DATE=1\n' >> "$f"
-  grep -qxF 'eval "$(try init ~/Work/tries)"' "$f" || printf 'eval "$(try init ~/Work/tries)"\n' >> "$f"
+  grep -qxF 'eval "$(try init ~/Work)"' "$f" || printf 'eval "$(try init ~/Work)"\n' >> "$f"
 done
 echo "try: shell integration ensured in ~/.zshrc"
