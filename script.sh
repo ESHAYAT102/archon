@@ -437,6 +437,7 @@ chmod +x install.sh
 ./install.sh --all
 cd ..
 rm -rf ./dotfiles
+omarchy restart shell
 
 rm -rf ~/.local/share/omarchy/applications/typora.desktop
 rm -rf ~/.local/share/applications/typora.desktop
