@@ -1686,22 +1686,10 @@ Item {
     }
   }
 
-  // O menu de apps é o plugin de primeira parte `omarchy.menu`, na rota "apps"
-  // — o mesmo destino de `omarchy menu toggle apps`. Como o dock já recebe a
-  // referência da shell, dá para chamar o host direto e poupar o subprocesso
-  // do CLI; `toggle` (e não `summon`) para o botão fechar o que ele abriu.
-  //
-  // O host pode *recusar*, e desde o Omarchy 4.0.3 ele recusa: o `toggle` do
-  // sandbox (`PluginShellApi`) só deixa um plugin mexer em si mesmo ou, se ele
-  // for a barra ativa, no que a barra controla. O dock não é nem um nem outro,
-  // então a chamada devolve `false` sem abrir nada e sem dizer nada. Por isso
-  // o retorno é lido: um `false` não é "abriu", é o mesmo caso do plugin
-  // rodando fora da shell — o CLI é quem sobra nos dois.
+  // O botão abre a grade de aplicativos da extensão Launchpad do Vicinae.
   function openAppMenu() {
     root.closeMenu()
-    if (root.shell && typeof root.shell.toggle === "function"
-        && root.shell.toggle("omarchy.menu", JSON.stringify({ menu: "apps" }))) return
-    Util.execDetached("omarchy-menu toggle apps")
+    Util.execDetached("vicinae cmd launch '@ESHAYAT102/launchpad:apps'")
   }
 
   // A janela de ajustes é o *segundo* ponto de entrada deste mesmo plugin (ver

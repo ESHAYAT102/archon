@@ -410,6 +410,7 @@ spicetify restore backup apply
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/install.sh | sh
 
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-confetti-extension/refs/heads/master/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/vicinae-launchpad-extension/refs/heads/main/install.sh | bash
 
 curl -fsSL https://bun.sh/install | bash
 for package in ${bun_package_install[@]}; do
