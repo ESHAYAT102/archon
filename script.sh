@@ -376,7 +376,6 @@ omarchy plugin add https://github.com/ESHAYAT102/notification-center-omarchy-plu
 omarchy plugin add https://github.com/ESHAYAT102/ollama-omarchy-plugin.git --enable -y
 ~/.config/omarchy/plugins/esh.ollama/install.sh
 omarchy plugin add https://github.com/ESHAYAT102/ajazz-keyboard-omarchy-plugin.git --enable -y
-omarchy plugin add https://github.com/cytracon/omarchy-window-controls.git --enable -y
 sudo install -Dm644 "$HOME/.config/omarchy/plugins/esh.ajazz-keyboard/udev/70-ajazz-ak820.rules" /etc/udev/rules.d/70-ajazz-ak820.rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger
