@@ -10,7 +10,7 @@
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/archon/refs/heads/main/script.sh | bash
 ```
 
-The full setup also installs the MacOS Icons theme and applies Archon's ArcDock customizations, including the left-side Launchpad button, application-icon fallback handling, and normalized fallback icon sizing.
+The full setup also installs the MacOS Icons theme.
 
 ### Flags
 
