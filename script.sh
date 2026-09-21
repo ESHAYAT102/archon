@@ -376,6 +376,8 @@ done
 
 chsh -s /usr/bin/fish
 
+curl -fsSL https://vite.plus | bash
+
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
