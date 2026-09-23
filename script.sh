@@ -434,7 +434,7 @@ rm -rf ./MacOS-icon-theme
 git clone https://github.com/ESHAYAT102/dotfiles
 cd ./dotfiles
 chmod +x install.sh
-./install.sh --all
+./install.sh --all --theme catppuccin
 cd ..
 rm -rf ./dotfiles
 omarchy restart shell
