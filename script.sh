@@ -58,6 +58,7 @@ pacman_packages_install=(
 
 yay_package_install=(
   vicinae-bin
+  sonora-bin
   tty-clock
   crush-bin
   hyprmoncfg
