@@ -64,7 +64,6 @@ yay_package_install=(
   hyprmoncfg
   t3code-nightly-bin
   charm-pop-bin
-  terax-bin
 )
 
 flatpak_package_install=(
